@@ -1,12 +1,13 @@
 const router = require('express').Router();
-const { Post, User, Like } = require('../../models');
+const { Post, User, Like, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'post_caption', 'created_at', [
+        attributes: ['id', 'post_caption', 'created_at',
             // literal SQL query to return post likes
-        ]
+
+
         ],
         include: [
             {
@@ -22,9 +23,43 @@ router.get('/', (req, res) => {
         })
 });
 
-// router.get('/:id', (req, res) => {
+/****************************************************** */
 
-// }); 
+router.get('/:id', (req, res) => {
+    Post.findOne({
+
+        where: {
+            id: req.params.id
+        },
+        attributes: ['id', 'post_caption', 'created_at',
+            //literal SQL query to return count of likes post has
+
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    }).then(postData => {
+        if (!postData) {
+            res.status(404).json({ message: 'No post found with this id!' });
+            return;
+        }
+        res.json(postData);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
 
 // expects ~ post_caption, user_id
 router.post('/', (req, res) => {
@@ -51,9 +86,9 @@ router.put('/like', (req, res) => {
                     id: req.body.post_id
                 },
                 attributes: ['id', 'post_caption', 'created_at',
-                    [
-                        // literal SQL query to return count of likes post has
-                    ]
+
+                    // literal SQL query to return count of likes post has
+
                 ]
             })
                 .then(postData => res.json(postData))
@@ -64,13 +99,48 @@ router.put('/like', (req, res) => {
         })
 });
 
-// router.put('/:id', (req, res) => {
+/****************************************************** */
+router.put('/:id', (req, res) => {
+    Post.update(
+        {
+            post_caption: req.body.post_caption
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    ).then(postData => {
+        if (!postData) {
+            res.status(404).json({ message: 'No post found with this id!' });
+            return;
+        }
+        res.json(postData);
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+/****************************************************** */
+router.delete('/:id', (req, res) => {
+    Post.destroy(
+        {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(postData => {
+            if (!postData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            res.json(postData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
-// })
-
-
-// router.delete('/:id', (req, res) => {
-
-// })
-
-module.exports = router; 
+module.exports = router;
