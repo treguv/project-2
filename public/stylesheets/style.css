@@ -1,0 +1,39 @@
+:root {
+    --smoky-black: #1c110a; 
+    --dutch-white: #e4d6a7; 
+    --yellow-sun: #e9b44c; 
+    --rufous: #9b2915; 
+    --cadet-blue: #50a2a7; 
+}
+
+body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: var(--smoky-black);
+  }
+/* google fonts available : 'Josefin Sans' */ 
+
+/* navbar styles */
+.nav-background {
+    background-color: var(--yellow-sun); 
+}
+
+.navbar-text { 
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+}
+
+.search-btn {
+    background-color: var(--yellow-sun); 
+}
+
+.dot {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    /* background-image: background image goes here */
+  }
