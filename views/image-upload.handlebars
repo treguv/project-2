@@ -1,6 +1,26 @@
-<p>Hello test image!</p>
-<button id="upload">Select an image...</button>
-
+<main>
+    <div class="container col-12">
+        <div class="row">
+            <div class="col-2">
+                <div class="card mt-3">
+                    <img id="post-image" src="/images/stock_add_image.png" class="card-img-top">
+                    <div class="card-body">
+                        {{!-- --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="caption">Caption:</label>
+                    <textarea class="form-control" rows="3" id="caption"></textarea>
+                    <label for="tags">Tags:</label>
+                    <textarea class="form-control" rows="1" id="tags"></textarea>
+                </div>
+                <button id="upload" class="btn btn-success " type="button">Post!</button>
+            </div>
+        </div>
+    </div>
+</main>
 {{!-- Cloudinary upload widget --}}
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">
 </script>

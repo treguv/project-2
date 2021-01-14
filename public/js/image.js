@@ -1,5 +1,6 @@
+//variable to hold the image url
+let uploadedImageUrl = "";
 //init the widget
-
 var myCropWidget = cloudinary.createUploadWidget(
   {
     cloudName: "quarantinepics",
@@ -12,6 +13,9 @@ var myCropWidget = cloudinary.createUploadWidget(
     console.log("this is what it results ", result);
     if (result.info.url) {
       console.log(result.info.url); // This here will return the image url uploaded onto the webpage
+      //replace the stock photo with the one the user uploads
+      uploadedImageUrl = result.info.url;
+      document.getElementById("post-image").src = uploadedImageUrl; //This sets the stock image with the uploaded one;
     }
   }
 );
@@ -23,4 +27,22 @@ function uploadMenuHandler(event) {
   console.log("data object", data);
   //After this menu the file is uploaded to the server
 }
-document.querySelector("#upload").addEventListener("click", uploadMenuHandler);
+
+//send request to post api to save as new post
+function makePostHandler(event) {
+  console.log("Making post!");
+  event.preventDefault();
+  const caption = document.querySelector("#caption").value.trim();
+  const tags = document.querySelector("#tags").value.trim();
+  const image = document.getElementById("post-image").src;
+  console.log(
+    `Making new post with ${image} image, ${caption} caption, ${tags} tags`
+  );
+}
+//Add listener to add image page
+document
+  .querySelector("#post-image")
+  .addEventListener("click", uploadMenuHandler);
+
+//add listener for upload button
+document.querySelector("#upload").addEventListener("click", makePostHandler);
