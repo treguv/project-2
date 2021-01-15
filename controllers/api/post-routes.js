@@ -75,7 +75,9 @@ router.post("/", (req, res) => {
     user_id: req.body.user_id,
     image_url: req.body.image_url,
   })
-    .then((postData) => res.json(postData))
+    .then((postData) => {
+      res.json(postData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -152,6 +154,37 @@ router.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+//render the view of a single post
+router.get("/viewpost/:id", (req, res) => {
+  //expects  the id of the post to render
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  }).then((dbPostData) => {
+    // console.log(dbPostData);
+    const post = dbPostData.get({ plain: true }); // serialize all the posts
+    console.log(post);
+    res.render("single-post", {
+      post,
+    });
+  });
 });
 
 module.exports = router;
