@@ -6,6 +6,16 @@
   --cadet-blue: #50a2a7;
 }
 
+/* Remove everything from a tags */
+a {
+  text-decoration: none;
+  color: var(--smoky-black);
+}
+a:hover {
+  text-decoration: none;
+  color: var(--smoky-black);
+}
+
 body,
 html {
   height: 100%;
