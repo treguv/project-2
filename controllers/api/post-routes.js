@@ -178,11 +178,11 @@ router.get("/viewpost/:id", (req, res) => {
       },
     ],
   }).then((dbPostData) => {
-    console.log(dbPostData);
+    // console.log(dbPostData);
+    const post = dbPostData.get({ plain: true }); // serialize all the posts
+    console.log(post);
     res.render("single-post", {
-      post: dbPostData.dataValues,
-      user: dbPostData.dataValues.user.dataValues,
-      comments: dbPostData.dataValues.comments,
+      post,
     });
   });
 });

@@ -22,6 +22,7 @@ async function postCommentHandler(event) {
 
   console.log(response);
   document.getElementById("comment").value = "";
+  document.location.reload();
 }
 
 //find the post buttom

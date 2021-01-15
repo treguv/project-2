@@ -51,9 +51,12 @@ async function makePostHandler(event) {
   });
 
   //check if everything worked
-  console.log("Server response", response);
-
-  document.location.replace("/"); // replace with dashboard after
+  //console.log("Server response", response);
+  if (response.ok) {
+    document.location.replace("/"); // replace with dashboard after
+  } else {
+    alert(response.statusText);
+  }
 }
 
 //Add listener to add image page
