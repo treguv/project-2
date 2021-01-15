@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const { Post, User, Like, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
+//find all post
 router.get('/', (req, res) => {
     Post.findAll({
         attributes: ['id', 'post_caption', 'created_at',
             // literal SQL query to return post likes
-
-
         ],
         include: [
             {
@@ -23,8 +23,7 @@ router.get('/', (req, res) => {
         })
 });
 
-/****************************************************** */
-
+//find one post
 router.get('/:id', (req, res) => {
     Post.findOne({
 
@@ -99,7 +98,7 @@ router.put('/like', (req, res) => {
         })
 });
 
-/****************************************************** */
+//update post route
 router.put('/:id', (req, res) => {
     Post.update(
         {
@@ -122,7 +121,8 @@ router.put('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-/****************************************************** */
+
+//delete post route
 router.delete('/:id', (req, res) => {
     Post.destroy(
         {
