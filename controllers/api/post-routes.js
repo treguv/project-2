@@ -163,17 +163,26 @@ router.get("/viewpost/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
   }).then((dbPostData) => {
-    User.findOne({
-      where: {
-        id: dbPostData.dataValues.user_id,
-      }, //change to just get username
-    }).then((dbUserData) => {
-      console.log(dbUserData);
-      res.render("single-post", {
-        post: dbPostData.dataValues,
-        username: dbUserData.dataValues.username,
-      });
+    console.log(dbPostData);
+    res.render("single-post", {
+      post: dbPostData.dataValues,
+      user: dbPostData.dataValues.user.dataValues,
+      comments: dbPostData.dataValues.comments,
     });
   });
 });

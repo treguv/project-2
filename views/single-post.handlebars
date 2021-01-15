@@ -10,18 +10,22 @@
                     <p>{{post.post_caption}}</p>
                 </div>
                 <div class=" align-text-middle card inline-block mt-1 drop-shadow justify-right">
-                    <p class="inline-block">{{username}}</p>
+                    <p class="inline-block">{{user.username}}</p>
                     <a class="inline-block dot " href="https://github.com/"></a>
                 </div>
             </div>
             {{!--Comment stuff --}}
             <div class="col-lg-4 col-sm-12">
                 <div class="form-group py-3  ">
-
                     <textarea placeholder="Comment" class=" form-control py-2 drop-shadow" rows="3"
                         id="comment"></textarea>
-
                 </div>
+                {{#each comments as |comment| }}
+                <div class="card mt-1 drop-shadow">
+                    <p>{{dataValues.comment_text}}</p>
+                </div>
+                {{/each}}
+                {{comments.comment_text}}
             </div>
             <div class="col-lg-2">
                 <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
