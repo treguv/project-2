@@ -6,19 +6,31 @@
                 <div class="card mt-3 drop-shadow" id="post-image-card">
                     <img id="post-image" src="{{post.image_url}}" class="card-img-top">
                 </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="form-group py-3">
+                <div class="card mt-1 drop-shadow">
                     <p>{{post.post_caption}}</p>
-                    <p>{{tags}}</p>
+                </div>
+                <div class=" align-text-middle card inline-block mt-1 drop-shadow justify-right">
+                    <p class="inline-block">{{username}}</p>
+                    <a class="inline-block dot " href="https://github.com/"></a>
                 </div>
             </div>
+            {{!--Comment stuff --}}
+            <div class="col-lg-4 col-sm-12">
+                <div class="form-group py-3  ">
+
+                    <textarea placeholder="Comment" class=" form-control py-2 drop-shadow" rows="3"
+                        id="comment"></textarea>
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
+            </div>
         </div>
-    </div>
 </main>
 {{!-- Cloudinary upload widget --}}
 {{!--
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"> --}}
 </script>
-{{!--
-<script src="./js/image.js"></script> --}}
+
+<script src="/javascript/comment.js"></script>

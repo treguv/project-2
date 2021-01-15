@@ -164,8 +164,17 @@ router.get("/viewpost/:id", (req, res) => {
       id: req.params.id,
     },
   }).then((dbPostData) => {
-    console.log(dbPostData);
-    res.render("single-post", { post: dbPostData.dataValues });
+    User.findOne({
+      where: {
+        id: dbPostData.dataValues.user_id,
+      }, //change to just get username
+    }).then((dbUserData) => {
+      console.log(dbUserData);
+      res.render("single-post", {
+        post: dbPostData.dataValues,
+        username: dbUserData.dataValues.username,
+      });
+    });
   });
 });
 

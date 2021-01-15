@@ -11,3 +11,13 @@
   max-height: fit-content;
   max-width: auto;
 }
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.fill-in {
+  width: 100%;
+  height: 100%;
+}

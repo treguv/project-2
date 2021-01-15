@@ -35,9 +35,9 @@ async function makePostHandler(event) {
   const caption = document.querySelector("#caption").value.trim();
   const tags = document.querySelector("#tag").value.trim();
   const image = document.getElementById("post-image").src;
-  console.log(
-    `Making new post with ${image} image, ${caption} caption, ${tags} tags`
-  );
+  // console.log(
+  //   `Making new post with ${image} image, ${caption} caption, ${tags} tags`
+  // );
   const response = await fetch("/api/posts/", {
     method: "POST",
     headers: {
