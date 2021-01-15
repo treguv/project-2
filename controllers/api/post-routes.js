@@ -156,4 +156,17 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+//render the view of a single post
+router.get("/viewpost/:id", (req, res) => {
+  //expects  the id of the post to render
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+  }).then((dbPostData) => {
+    console.log(dbPostData);
+    res.render("single-post", { post: dbPostData.dataValues });
+  });
+});
+
 module.exports = router;

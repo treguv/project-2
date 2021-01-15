@@ -1,0 +1,13 @@
+/* Add drop shadow */
+.drop-shadow {
+  filter: drop-shadow(2px 2px 0.2rem black);
+}
+
+#post-image-card {
+  max-height: fit-content;
+  max-width: auto;
+}
+#post-image {
+  max-height: fit-content;
+  max-width: auto;
+}

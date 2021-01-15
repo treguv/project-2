@@ -33,7 +33,7 @@ async function makePostHandler(event) {
   console.log("Making post!");
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
-  const tags = document.querySelector("#tags").value.trim();
+  const tags = document.querySelector("#tag").value.trim();
   const image = document.getElementById("post-image").src;
   console.log(
     `Making new post with ${image} image, ${caption} caption, ${tags} tags`
@@ -62,4 +62,6 @@ document
   .addEventListener("click", uploadMenuHandler);
 
 //add listener for upload button
-document.querySelector("#upload").addEventListener("click", makePostHandler);
+document
+  .getElementById("upload-image")
+  .addEventListener("click", makePostHandler);
