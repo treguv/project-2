@@ -46,16 +46,16 @@ async function makePostHandler(event) {
     body: JSON.stringify({
       post_caption: caption,
       user_id: "1",
-      image_url:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.H9bX44qF0gHskZ3AD2VlvQHaE5%26pid%3DApi&f=1",
+      image_url: image,
     }),
   });
 
   //check if everything worked
-  if (!response.ok) {
-    console.log("Something broke");
-  }
+  console.log("Server response", response);
+
+  document.location.replace("/"); // replace with dashboard after
 }
+
 //Add listener to add image page
 document
   .querySelector("#post-image")

@@ -75,7 +75,9 @@ router.post("/", (req, res) => {
     user_id: req.body.user_id,
     image_url: req.body.image_url,
   })
-    .then((postData) => res.json(postData))
+    .then((postData) => {
+      res.json(postData);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
