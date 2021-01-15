@@ -48,3 +48,12 @@ html {
   display: inline-block;
   /* background-image: background image goes here */
 }
+
+.mouse-over {
+  filter: drop-shadow(2px 2px 0.05rem black);
+  transition: 0.1s;
+}
+.mouse-over:hover {
+  filter: drop-shadow(2px 2px 0.2rem black);
+  transform: scale(1.05);
+}
