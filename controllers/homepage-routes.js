@@ -5,9 +5,7 @@ router.get('/', (req, res) => {
     res.render('homepage', {
         loggedIn: req.session.loggedIn
     });
-})
-
-
+});
 
 //render login.handlebars template.
 router.get('/login', (req, res) => {
@@ -16,17 +14,22 @@ router.get('/login', (req, res) => {
         return;
     }
     res.render('login');
-})
-
-
+});
 
 
 //render signup.handlebars template, 
 router.get('/signup', (req, res) => {
     res.render('signup');
-})
+});
+
+
+//render the image test page
+router.get("/image", (req, res) => {
+    res.render("image-upload");
+});
 
 
 
 
-module.exports = router; 
+module.exports = router;
+

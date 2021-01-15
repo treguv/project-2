@@ -34,6 +34,8 @@ router.get('/:id', (req, res) => {
 
 //login route
 router.post('/login', (req, res) => {
+    console.log(req.body)
+
     User.findOne({
         where: {
             email: req.body.email
@@ -44,7 +46,6 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user with that email address!!' });
             return;
         }
-
         const validPassword = userData.checkPassword(req.body.password);
 
         if (!validPassword) {
