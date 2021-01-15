@@ -15,7 +15,7 @@ var myCropWidget = cloudinary.createUploadWidget(
       console.log(result.info.url); // This here will return the image url uploaded onto the webpage
       //replace the stock photo with the one the user uploads
       uploadedImageUrl = result.info.url;
-      document.getElementById("post-image").src = uploadedImageUrl; //This sets the stock image with the uploaded one;
+      document.getElementById("post-image").src = uploadedImageUrl; //This sets the stock image with the uploaded one
     }
   }
 );
@@ -29,7 +29,7 @@ function uploadMenuHandler(event) {
 }
 
 //send request to post api to save as new post
-function makePostHandler(event) {
+async function makePostHandler(event) {
   console.log("Making post!");
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
@@ -38,6 +38,23 @@ function makePostHandler(event) {
   console.log(
     `Making new post with ${image} image, ${caption} caption, ${tags} tags`
   );
+  const response = await fetch("/api/posts/", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      post_caption: caption,
+      user_id: "1",
+      image_url:
+        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.H9bX44qF0gHskZ3AD2VlvQHaE5%26pid%3DApi&f=1",
+    }),
+  });
+
+  //check if everything worked
+  if (!response.ok) {
+    console.log("Something broke");
+  }
 }
 //Add listener to add image page
 document
