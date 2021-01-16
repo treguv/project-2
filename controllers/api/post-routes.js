@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
       "post_caption",
       "created_at",
       "image_url",
+      "tags",
       // literal SQL query to return post likes
     ],
     include: [
@@ -43,7 +44,14 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: [
+          "id",
+          "comment_text",
+          "post_id",
+          "user_id",
+          "created_at",
+          "tags",
+        ],
         include: {
           model: User,
           attributes: ["username"],
@@ -74,6 +82,7 @@ router.post("/", (req, res) => {
     post_caption: req.body.post_caption,
     user_id: req.body.user_id,
     image_url: req.body.image_url,
+    tags: req.body.tags,
   })
     .then((postData) => {
       res.json(postData);
@@ -187,4 +196,21 @@ router.get("/viewpost/:id", (req, res) => {
   });
 });
 
+//Search for a given post
+router.get("/search/:query", (req, res) => {
+  Post.findAll({
+    where: {
+      tags: req.params.query,
+    },
+  }).then((dbPostData) => {
+    console.log("request recieved");
+    // console.log(dbPostData.get({ plain: true }));
+    const posts = dbPostData.map((post) => post.get({ plain: true })); // serialize all the posts
+    console.log("found posts", posts);
+    res.render("search-posts", {
+      loggedIn: req.session.loggedIn,
+      posts,
+    });
+  });
+});
 module.exports = router;

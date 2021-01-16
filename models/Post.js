@@ -26,6 +26,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    tags: {
+      type: DataTypes.STRING,
+      allowNull: true, //we want to allow the user to have no tags on their page
+    },
   },
   {
     sequelize,

@@ -1,0 +1,17 @@
+<main>
+    <div class="container col-12">
+        <div class="row">
+            {{#each posts}}
+            <div class="col-lg-2 col-sm-6 col-md-3">
+                <a href="/api/posts/viewpost/{{id}}">
+                    <div class="card mt-3 mouse-over">
+                        <img src="{{image_url}}" class="card-img-top">
+                    </div>
+                </a>
+                {{!-- <p class="overlay-text card-text">{{post_caption}}</p> dont really like the look of the
+                caption--}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</main>

@@ -54,8 +54,8 @@
             </div>
             <!-- search bar on right side in nav bar -->
             <form class="d-flex justify-content-end">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
+                <input id="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn search-btn" type="submit"><i class="fas fa-search" id="search"></i></button>
             </form>
             <a href="https://github.com/" class="dot"></a>
             <!-- github link if just a placeholder right now (will redirect to user profile in the future) -->
@@ -69,6 +69,7 @@
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+    <script src="/javascript/search.js"></script>
 
 </body>
 
