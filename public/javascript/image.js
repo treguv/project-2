@@ -33,7 +33,8 @@ async function makePostHandler(event) {
   console.log("Making post!");
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
-  const tags = document.querySelector("#tag").value.trim();
+  const tags_local = document.querySelector("#tag").value.trim();
+  console.log(tags_local);
   const image = document.getElementById("post-image").src;
   // console.log(
   //   `Making new post with ${image} image, ${caption} caption, ${tags} tags`
@@ -47,6 +48,7 @@ async function makePostHandler(event) {
       post_caption: caption,
       user_id: "1",
       image_url: image,
+      tags: tags_local, // this might need to be changed to an array of tags in the future
     }),
   });
 

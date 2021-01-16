@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Post extends Model {}
+class Post extends Model { }
 
 Post.init(
   {
@@ -25,6 +25,10 @@ Post.init(
     image_url: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    tags: {
+      type: DataTypes.STRING,
+      allowNull: true, //we want to allow the user to have no tags on their page
     },
   },
   {

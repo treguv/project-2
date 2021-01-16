@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- bootstrap stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- popper.js-->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- favicon stylesheet -->
     <script src="https://kit.fontawesome.com/e8bd13e220.js" crossorigin="anonymous"></script>
     <!-- google fonts -->
@@ -13,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
     <!-- stylesheet -->
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/notification.css">
     <title>QuarantinePics</title>
 </head>
 
@@ -35,7 +38,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Notifications</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" id="logout">Logout</a>
                     </li>
@@ -44,13 +46,12 @@
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                     {{/if}}
-                </ul>
 
             </div>
             <!-- search bar on right side in nav bar -->
             <form class="d-flex justify-content-end">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn search-btn" type="submit"><i class="fas fa-search"></i></button>
+                <input id="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn search-btn" type="submit"><i class="fas fa-search" id="search"></i></button>
             </form>
             <a href="/profile" class="dot"></a>
             <!-- github link if just a placeholder right now (will redirect to user profile in the future) -->
@@ -64,6 +65,9 @@
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+    <script src="/javascript/search.js"></script>
+
+    <script src="/javascript/notification.js"></script>
 
 </body>
 
