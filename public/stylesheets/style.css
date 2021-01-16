@@ -51,9 +51,26 @@ html {
 
 .mouse-over {
   filter: drop-shadow(2px 2px 0.05rem black);
-  transition: 20s;
+  filter: blur(0);
+  transition: 0.2s;
 }
 .mouse-over:hover {
   filter: drop-shadow(2px 2px 0.2rem black);
-  transform: scale(10.1);
+  filter: blur(2px);
+  transform: scale(1.05);
+}
+
+/* Have the text show up on top of the card  */
+.overlay-text {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  transform: translate(0%, -100%);
+  z-index: 9999;
+  color: var(--dutch-white);
+  opacity: 0;
+  transition: 0.2s;
+}
+.overlay-text:hover {
+  opacity: 1;
 }
