@@ -24,7 +24,7 @@ html {
   font-family: sans-serif;
   color: var(--smoky-black);
 }
-/* google fonts available : 'Josefin Sans' */
+/* google fonts available : 'Josefin Sans' and 'Baloo 2' */
 
 /* navbar styles */
 .nav-background {
@@ -34,6 +34,7 @@ html {
 .navbar-text {
   font-size: 20px;
   font-family: "Josefin Sans";
+  font-weight: bold;
 }
 
 .search-btn {
@@ -59,6 +60,18 @@ html {
 .card-img-custom {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.card-body-custom {
+  background-color: #F5F5F5;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 5px;
+}
+
+.card-text-custom {
+  font-family: 'Baloo 2';
+  font-size: 15px;
 }
 
 
