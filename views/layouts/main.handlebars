@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
     <!-- stylesheet -->
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/notification.css">
     <title>QuarantinePics</title>
 </head>
 
@@ -39,6 +40,9 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="/image">Test Post</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" id="logout">Logout</a>
                     </li>
                     {{else}}
@@ -46,10 +50,6 @@
                         <a class="nav-link" href="/login">Login</a>
                     </li>
                     {{/if}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/image">Test Post</a>
-                    </li>
-                </ul>
 
             </div>
             <!-- search bar on right side in nav bar -->
@@ -70,6 +70,8 @@
     <script src="/javascript/logout.js"></script>
     {{/if}}
     <script src="/javascript/search.js"></script>
+
+    <script src="/javascript/notification.js"></script>
 
 </body>
 

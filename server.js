@@ -18,7 +18,6 @@ const sess = {
       60 /* minutes per hour */ *
       60 /* seconds per minute */ *
       1000 /* milse. per sec*/,
-    //what the heck does this mean?
   },
   resave: false,
   saveUninitialized: true,

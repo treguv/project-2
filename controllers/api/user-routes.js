@@ -78,23 +78,32 @@ router.post('/logout', (req, res) => {
 });
 
 
-
 //create user
-router.post('/', (req, res) => {
-    User.create({
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
-    })
-        .then(dbUserData => {
-            req.session.save(() => {
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
-                req.session.loggedIn = true;
+router.post('/', async (req, res) => {
+    const { username, email, password } = req.body
+    try {
+        const userExists = Boolean(
+            await User.findOne({
+                where: { username }
+            })
+        )
+        if (userExists) {
+            res.status(409).json({ message: " Username already exists!" });
+            return;
+        }
+        const user = await User.create({ username, email, password })
+        req.session.save(() => {
+            req.session.user_id = user.id;
+            req.session.username = user.username;
+            req.session.loggedIn = true;
 
-                res.json(dbUserData);
-            });
-        });
+            res.status(201).json(user);
+        })
+    } catch (err) {
+        res.status(500).send({
+            message: "you are not logged in"
+        })
+    }
 });
 
 // make sure to pass in req.body in put routes

@@ -17,13 +17,20 @@
             {{!--Comment stuff --}}
             <div class="col-lg-4 col-sm-12">
                 <div class="form-group py-3  ">
+                    {{#if loggedIn}}
+                    {{!-- if user is loggedIn, display the following --}}
                     <textarea placeholder="Comment" class=" form-control py-2 drop-shadow" rows="3"
                         id="comment"></textarea>
+                    {{/if}}
+                    {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
+                    create comment --}}
+                    <input type="hidden" value={{user_id}} id="session_user">
                 </div>
                 {{#each post.comments as |comment| }}
                 <div class="card mt-1 drop-shadow">
                     <p>{{comment_text}}</p>
                     <p>{{user.username}}</p>
+
                 </div>
                 {{/each}}
             </div>
