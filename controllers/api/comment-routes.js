@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, User, Post } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 //get route to find comment
@@ -14,9 +15,8 @@ router.get('/', (req, res) => {
         });
 });
 
-
-//post route to create a comment
-router.post('/', (req, res) => {
+//post route to create a comment and added withAuth
+router.post('/', withAuth, (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
         user_id: req.body.user_id,

@@ -6,7 +6,6 @@ async function signupFormHandler(event) {
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
-    console.log(username, password)
 
     if (username && email && password) {
         console.log(username, password)
@@ -18,18 +17,30 @@ async function signupFormHandler(event) {
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
-        });
+        })
 
         if (response.ok) {
+            document.querySelector('#username-signup').value = "";
+            document.querySelector('#email-signup').value = "";
+            document.querySelector('#password-signup').value = "";
             document.location.replace('/');
         } else {
-            alert(response.statusText);
+            const errMsg = await response.json()
+            document.getElementById("user-error").innerHTML = errMsg.message
+            console.log(errMsg.message)
+            if (password.length < 4) {
+                document.getElementById('password-error').innerHTML = "Password should be more than 4 characters"
+            }
+
         }
+
+
+
     }
-}
+
+};
+
 
 
 
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
-
-

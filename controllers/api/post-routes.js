@@ -183,6 +183,8 @@ router.get("/viewpost/:id", (req, res) => {
     console.log(post);
     res.render("single-post", {
       post,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id,
     });
   });
 });

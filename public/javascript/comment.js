@@ -5,6 +5,10 @@ async function postCommentHandler(event) {
     window.location.toString().split("/").length - 1
   ];
   const user_id_local = 1; //TODO replace with session auth
+
+  // Get user_id dynamically
+  const sessionUser = document.getElementById('session_user').value;
+
   const comment_text_local = document.getElementById("comment").value.trim();
 
   //Make request to the server
@@ -15,7 +19,7 @@ async function postCommentHandler(event) {
     },
     body: JSON.stringify({
       comment_text: comment_text_local,
-      user_id: user_id_local,
+      user_id: sessionUser,
       post_id: post_id_local,
     }),
   });
@@ -25,7 +29,7 @@ async function postCommentHandler(event) {
   document.location.reload();
 }
 
-//find the post buttom
+//find the post button
 document
   .getElementById("post-comment")
   .addEventListener("click", postCommentHandler);

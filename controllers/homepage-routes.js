@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
+const withAuth = require('../utils/auth');
+
 
 // renders homepage.handlebars template
 router.get("/", (req, res) => {
@@ -43,9 +45,11 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-//render the image test page
-router.get("/image", (req, res) => {
-  res.render("image-upload");
+//render the image test page and added withAuth function 
+router.get("/image", withAuth, (req, res) => {
+  res.render("image-upload", {
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 module.exports = router;

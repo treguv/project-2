@@ -5,19 +5,23 @@
 
 
 <link rel="stylesheet" href="/stylesheets/login.css">
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 login-section-wrapper">
-            {{!-- <div class="brand-wrapper">
-                <img src="assets/images/logo.svg" alt="logo" class="logo">
-            </div> --}}
             <div class="login-wrapper my-auto">
-                <h1 class="login-title">Signup</h1>
+                <h1 class="signup-title">Signup</h1>
                 <form class="signup-form" id="my_signup">
                     <div class="form-group">
+
+                        {{!-- adding new code for validations --}}
+
                         <label for="username-signup">Username</label>
                         <input type="text" name="username" id="username-signup" class="form-control"
                             placeholder="peanut">
+                        <div id="user-error"> </div>
+
+
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email-signup" class="form-control"
                             placeholder="email@example.com">
@@ -26,6 +30,8 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password-signup" class="form-control"
                             placeholder="enter your password">
+                        <div id="password-error">
+                        </div>
                     </div>
                     <button id="signup" class="btn btn-block login-btn" type="submit">Sign-up</button>
                 </form>
