@@ -4,7 +4,34 @@ const { Post, User, Comment, Like } = require('../../models');
 
 // /liked
 router.get('/', (req, res) => {
-    res.render('liked-posts');
-})
+    Like.findAll({
+        where: {
+            user_id: req.session.user_id
+        }, 
+        attributes: [
+            'id', 
+            'user_id',
+            'post_id'
+        ], 
+        include: [
+            {
+                model: Post, 
+                attributes: ['id', 'post_caption', 'image_url', 'post_id', 'user_id', 'tags', 'created_at'], 
+                include: {
+                    model: User, 
+                    attributes: ['username']
+                }
+            }
+        ]
+    })
+    .then(likedPostData => {
+        const posts = likedPostData.map(post => post.get({ plain: true })); // serialize data
+        res.render('liked-posts', { posts, loggedIn: true }); 
+    })
+    .catch(err => {
+        console.log(err); 
+        res.status(500).json(err);
+    })
+}); 
 
 module.exports = router; 
