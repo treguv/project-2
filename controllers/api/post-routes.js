@@ -13,14 +13,14 @@ router.get("/", (req, res) => {
       "image_url",
       "tags",
       // literal SQL query to return post likes
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ["username"]
+      }
+    ]
   })
     .then((postData) => res.json(postData))
     .catch((err) => {
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
       "post_caption",
       "created_at",
       "image_url",
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE like.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -56,13 +56,13 @@ router.get("/:id", (req, res) => {
         include: {
           model: User,
           attributes: ["username"],
-        },
+        }
       },
       {
         model: User,
         attributes: ["username"],
-      },
-    ],
+      }
+    ]
   })
     .then((postData) => {
       if (!postData) {
@@ -110,7 +110,7 @@ router.put("/like", (req, res) => {
       'post_caption',
       'image_url',
       'created_at',
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE like.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ]
   })
     .then(likeData => res.json(likeData))
