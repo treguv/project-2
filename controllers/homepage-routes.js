@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 
 // renders homepage.handlebars template
 router.get("/", (req, res) => {
+  console.log(req.session.user_id)
   //get data it needs to render posts
   Post.findAll({
     include: [

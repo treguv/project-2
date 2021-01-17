@@ -9,9 +9,12 @@
                 <div class="card mt-1 drop-shadow">
                     <p>{{post.post_caption}}</p>
                 </div>
+                <!-- shows amount of post likes -->
+                <p>{{post.like_count}} like(s)</p>
                 <div class=" align-text-middle card inline-block mt-1 drop-shadow justify-right">
                     <p class="inline-block">{{post.user.username}}</p>
                     <a class="inline-block dot " href="https://github.com/"></a>
+                    <button type="button" class="btn btn-primary" id="like-btn">Like</button>
                 </div>
             </div>
             {{!--Comment stuff --}}
@@ -45,3 +48,4 @@
 </script>
 
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/like.js"></script>

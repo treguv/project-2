@@ -1,0 +1,13 @@
+<section>
+    <div class="container">
+        <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Liked Posts</h2>
+    </div>
+    {{#if posts.length}}
+    <!-- posts go here -->
+
+    {{#each posts as |post|}}
+    {{> post post}}
+    {{/each}}
+
+    {{/if}}
+</section>

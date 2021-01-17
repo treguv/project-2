@@ -13,13 +13,14 @@ router.get("/", (req, res) => {
       "image_url",
       "tags",
       // literal SQL query to return post likes
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ["username"]
+      }
+    ]
   })
     .then((postData) => res.json(postData))
     .catch((err) => {
@@ -39,7 +40,7 @@ router.get("/:id", (req, res) => {
       "post_caption",
       "created_at",
       "image_url",
-      //literal SQL query to return count of likes post has
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -55,13 +56,13 @@ router.get("/:id", (req, res) => {
         include: {
           model: User,
           attributes: ["username"],
-        },
+        }
       },
       {
         model: User,
         attributes: ["username"],
-      },
-    ],
+      }
+    ]
   })
     .then((postData) => {
       if (!postData) {
@@ -97,27 +98,26 @@ router.post("/", (req, res) => {
 router.put("/like", (req, res) => {
   Like.create({
     user_id: req.body.user_id,
-    post_id: req.body.post_id,
-  }).then(() => {
-    return Post.findOne({
-      // finds post user liked
-      where: {
-        id: req.body.post_id,
-      },
-      attributes: [
-        "id",
-        "post_caption",
-        "created_at",
-
-        // literal SQL query to return count of likes post has
-      ],
-    })
-      .then((postData) => res.json(postData))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  });
+    post_id: req.body.post_id
+  })
+  // then find the post user liked
+  return Post.findOne({
+    where: {
+      id: req.body.post_id
+    },
+    attributes: [
+      'id',
+      'post_caption',
+      'image_url',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+    ]
+  })
+    .then(likeData => res.json(likeData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
 });
 
 //update post route
