@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 
 // renders homepage.handlebars template
 router.get("/", (req, res) => {
+  console.log(req.session.user_id)
   //get data it needs to render posts
   Post.findAll({
     include: [
@@ -49,6 +50,7 @@ router.get("/signup", (req, res) => {
 router.get("/image", withAuth, (req, res) => {
   res.render("image-upload", {
     loggedIn: req.session.loggedIn,
+    user_id: req.session.user_id,
   });
 });
 
