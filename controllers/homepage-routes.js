@@ -49,6 +49,7 @@ router.get("/signup", (req, res) => {
 router.get("/image", withAuth, (req, res) => {
   res.render("image-upload", {
     loggedIn: req.session.loggedIn,
+    user_id: req.session.user_id,
   });
 });
 

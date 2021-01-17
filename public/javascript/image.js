@@ -34,6 +34,9 @@ async function makePostHandler(event) {
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
   const tags_local = document.querySelector("#tag").value.trim();
+
+
+  const user_id = document.getElementById('user_id').value
   console.log(tags_local);
   const image = document.getElementById("post-image").src;
   // console.log(
@@ -46,7 +49,7 @@ async function makePostHandler(event) {
     },
     body: JSON.stringify({
       post_caption: caption,
-      user_id: "1",
+      user_id: user_id,
       image_url: image,
       tags: tags_local, // this might need to be changed to an array of tags in the future
     }),
@@ -70,3 +73,6 @@ document
 document
   .getElementById("upload-image")
   .addEventListener("click", makePostHandler);
+
+
+  // route ---> html ---> javascrip 

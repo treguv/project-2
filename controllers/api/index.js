@@ -6,6 +6,8 @@ const commentRoutes = require("./comment-routes");
 // const uploadRoutes = require("./aws-routes.js");
 const imageRoutes = require("./image-routes.js");
 
+
+
 // prefixes routes
 router.use("/users", userRoutes);
 router.use("/posts", postRoutes);
