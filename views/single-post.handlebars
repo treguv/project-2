@@ -37,6 +37,7 @@
                     </div>
                     {{/if}}
                 </div>
+<<<<<<< HEAD
                 {{#if post.comments}}
                 <select class="form-select drop-shadow" size="8" aria-label="size 8 select example">
                     {{#each post.comments as |comment| }}
@@ -55,6 +56,20 @@
         </div>
 
     </div>
+=======
+                {{#each post.comments as |comment| }}
+                <div class="card mt-1 drop-shadow">
+                    <p>{{comment_text}}</p>
+                    <p>{{user.username}}</p>
+                    {{/each}}
+                </div>
+                <div class="col-lg-2">
+                    <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
+                    {{!-- adding like button --}}
+
+                </div>
+            </div>
+>>>>>>> 18bbd69a83f95262eacb5ded803d874f78306cbf
 </main>
 {{!-- Cloudinary upload widget --}}
 {{!--
