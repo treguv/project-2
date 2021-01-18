@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/image-upload.css">
+<link rel="stylesheet" href="/stylesheets/singlepost.css">
 <main>
     <div class="container col-12">
         <div class="row">
@@ -14,7 +15,7 @@
                 <div class=" align-text-middle card inline-block mt-1 drop-shadow justify-right">
                     <p class="inline-block">{{post.user.username}}</p>
                     <a class="inline-block dot " href="https://github.com/"></a>
-                    <button type="button" class="btn btn-primary" id = "like-btn">Like</button>
+                    <button type="button" class="btn btn-primary" id="like-btn">Like</button>
                 </div>
             </div>
             {{!--Comment stuff --}}
@@ -28,19 +29,32 @@
                     {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
                     create comment --}}
                     <input type="hidden" value={{user_id}} id="session_user">
+                    {{!-- Make post button --}}
+                    {{#if loggedIn}}
+                    <div class="col-lg-2">
+                        <button id="post-comment" type="button"
+                            class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
+                    </div>
+                    {{/if}}
                 </div>
-                {{#each post.comments as |comment| }}
-                <div class="card mt-1 drop-shadow">
-                    <p>{{comment_text}}</p>
-                    <p>{{user.username}}</p>
+                {{#if post.comments}}
+                <select class="form-select drop-shadow" size="8" aria-label="size 8 select example">
+                    {{#each post.comments as |comment| }}
+                    <option class="text py-3">
+                        <div class="text card box-border mt-1 drop-shadow">
+                            <p class="">{{comment_text}} - </p>
+                            <p>{{user.username}}</p>
 
-                </div>
-                {{/each}}
+                        </div>
+                    </option>
+                    {{/each}}
+                </select>
+                {{/if}}
             </div>
-            <div class="col-lg-2">
-                <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
-            </div>
+
         </div>
+
+    </div>
 </main>
 {{!-- Cloudinary upload widget --}}
 {{!--
