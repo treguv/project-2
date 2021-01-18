@@ -56,14 +56,6 @@ body {
     padding-right: 50px;
   }
 }
-@media (max-width: 575px) {
-  .caption-section-wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* min-height: 100vh; */
-    display: block;
-  }
-}
 
 .caption-wrapper {
   width: 300px;
@@ -71,6 +63,7 @@ body {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+
 @media (max-width: 575px) {
   .caption-wrapper {
     width: 100%;
