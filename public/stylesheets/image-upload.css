@@ -37,6 +37,10 @@ body {
   min-height: 100vh;
 }
 
+.image {
+  max-width: 100%;
+}
+
 .caption-section-wrapper {
   display: -webkit-box;
   display: flex;
