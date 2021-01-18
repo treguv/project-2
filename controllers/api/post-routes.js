@@ -109,6 +109,21 @@ router.post("/", (req, res) => {
     });
 });
 
+//add a like to a post
+router.post("/like", (req, res) => {
+  Like.create({
+    user_id: 3, //req.session.user_id,
+    post_id: req.body.post_id,
+  })
+    .then((dbLikeData) => {
+      res.json(dbLikeData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // MUST BE BEFORE OTHER PUT ROUTES (will create error otherwise)
 router.put("/like", (req, res) => {
   Like.create({

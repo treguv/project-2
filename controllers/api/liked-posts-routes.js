@@ -6,7 +6,7 @@ const { Post, User, Comment, Like } = require("../../models");
 router.get("/", (req, res) => {
   Like.findAll({
     where: {
-      user_id: req.session.user_id, //req.session.user_id, PUT BACK
+      user_id: 3, //req.session.user_id, //req.session.user_id, PUT BACK
     },
     attributes: ["id", "user_id", "post_id"],
     include: [
@@ -38,18 +38,4 @@ router.get("/", (req, res) => {
     });
 });
 
-//add a like to a post
-router.post("/", (req, res) => {
-  Like.create({
-    user_id: req.body.user_id, //req.session.user_id,
-    post_id: req.body.post_id,
-  })
-    .then((dbLikeData) => {
-      res.json(dbLikeData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
 module.exports = router;
