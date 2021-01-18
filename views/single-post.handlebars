@@ -35,11 +35,12 @@
                     <p>{{user.username}}</p>
                     {{/each}}
                 </div>
+                {{#if loggedIn}}
                 <div class="col-lg-2">
                     <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
                     {{!-- adding like button --}}
-
                 </div>
+                {{/if}}
             </div>
 </main>
 {{!-- Cloudinary upload widget --}}
