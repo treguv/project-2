@@ -19,7 +19,7 @@
 
                 {{!-- amount of likes post has --}}
                 <div class="row">
-                    <button id="like-count" class="btn btn-like"><i class="far fa-heart"></i></button>
+                    <button id="like-count" class="btn btn-like"><i class="far fa-heart enhance-heart"></i></button>
                     <p class="like-display">{{post.like_count}} 1,345</p>
                 </div>
 
@@ -43,7 +43,7 @@
                             <textarea placeholder="it's a hard time for everyone, be nice to people!" id="comment"
                                 class="text-area-background" rows="3" id="comment"></textarea>
                             <input type="hidden" value={{user_id}} id="session_user">
-                            <button id="post-comment" class="btn btn-success " type="button">Post!</button>
+                            <button id="post-comment" class="btn btn-success" type="button">Post!</button>
                             {{/if}}
                         </div>
 

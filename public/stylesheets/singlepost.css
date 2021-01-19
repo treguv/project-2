@@ -35,6 +35,18 @@ body {
   font-size: 30px;
 }
 
+.enhance-heart {
+  transition-duration: 500ms;
+}
+
+.enhance-heart:hover {
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(1.4);
+  color: var(--rufous);
+  text-shadow: 2px 4px 6px red;
+}
+
 .post-username {
   font-family: 'Josefin Sans';
 }
