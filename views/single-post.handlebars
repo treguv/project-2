@@ -1,7 +1,6 @@
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -38,25 +37,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-                    {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
-                    create comment --}}
-                    <input type="hidden" value={{user_id}} id="session_user">
-                    {{!-- Make post button --}}
-                    {{#if loggedIn}}
-                    <div class="col-lg-2">
-                        <button id="post-comment" type="button"
-                            class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
 
                 {{!-- post username and post caption --}}
-                {{!-- <div class="row">
+                <div class="row">
                     <div class="col-12 col-lg-12" id="user-col">
                         {{post.user.username}} - {{post.post_caption}}
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             {{!-- comment text area--}}
             <div class=" caption-section-wrapper">
