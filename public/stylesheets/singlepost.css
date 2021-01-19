@@ -189,34 +189,9 @@ body {
   text-align: left;
 }
 
-#delete-post,
-#edit-post {
-  padding: 13px 20px;
-  background-color: white;
-  border-radius: 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fdbb28;
-  /* margin-bottom: 14px; */
-  justify-content: center;
-  display: flex;
-}
-#delete-post:hover,
-#edit-post:hover {
-  border: 1px solid #fdbb28;
-  background-color: #fff;
-  color: #fdbb28;
-}
-#profile-col {
-  padding: 0px 0px;
-  text-align: right;
+#like-count {
+  text-align: left;
 }
 #user-col {
-  padding: 0px 0px;
-  text-align: center;
-}
-
-#delete-post {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  text-align: left;
 }

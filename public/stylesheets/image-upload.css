@@ -45,7 +45,6 @@ body {
   min-height: 100vh;
 }
 
-
 .image {
   max-width: 100%;
 }
@@ -60,7 +59,7 @@ body {
   background-color: #fff;
 }
 
-/* single-post image view */ 
+/* single-post image view */
 .card-img-top {
   border-radius: 10px;
 }
@@ -72,8 +71,8 @@ body {
 }
 
 .post-user {
-  font-family: 'Josefin Sans';
-  font-size: 25px; 
+  font-family: "Josefin Sans";
+  font-size: 25px;
 }
 
 .dot-single-post {
@@ -217,8 +216,3 @@ body {
 #tag {
   margin-right: 20px;
 }
-
-
-
-
-
