@@ -45,6 +45,7 @@ body {
   min-height: 100vh;
 }
 
+
 .image {
   max-width: 100%;
 }
@@ -58,6 +59,31 @@ body {
   padding: 68px 100px;
   background-color: #fff;
 }
+
+/* single-post image view */ 
+.card-img-top {
+  border-radius: 10px;
+}
+
+.btn-like {
+  max-width: 5%;
+  max-height: 10%;
+  background-color: var(--cadet-blue);
+}
+
+.post-user {
+  font-family: 'Josefin Sans';
+  font-size: 25px; 
+}
+
+.dot-single-post {
+  height: 70px;
+  width: 70px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 @media (max-width: 991px) {
   .caption-section-wrapper {
     padding-left: 50px;
@@ -193,17 +219,6 @@ body {
 }
 
 
-/* single-post image view */ 
 
-
-.card-img-top {
-  border-radius: 10px;
-}
-
-.btn-like {
-  max-width: 5%;
-  max-height: 10%;
-  background-color: var(--cadet-blue);
-}
 
 
