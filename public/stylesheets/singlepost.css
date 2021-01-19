@@ -7,6 +7,57 @@ body {
   min-height: 100vh;
 }
 
+:root {
+  --smoky-black: #1c110a;
+  --dutch-white: #e4d6a7;
+  --yellow-sun: #e9b44c;
+  --rufous: #9b2915;
+  --cadet-blue: #50a2a7;
+}
+
+.card-img-top {
+  max-width: 100%;
+}
+
+.like-display {
+  font-size: 30px;
+  color: #000;
+  font-family: 'Josefin Sans'; 
+  /* margin-bottom: 25px; */
+  text-align: left;
+  padding-top: 30px;
+}
+
+.btn-like {
+  /* background-color: var(--yellow-sun); */
+  text-align: right; 
+  min-height: 100%;
+  font-size: 30px;
+}
+
+.post-username {
+  font-family: 'Josefin Sans';
+}
+
+.post-caption {
+  font-family: 'Josefin Sans';
+  font-size: 25px;
+}
+
+.comment-title {
+  font-family: 'Baloo 2';
+  text-align: left;
+}
+
+.text-area-background {
+  width: 500px;
+  border-radius: 15px;
+}
+
+.text-area-background:focus {
+  outline: none !important; 
+}
+
 .caption-section-wrapper {
   display: -webkit-box;
   display: flex;
@@ -75,13 +126,13 @@ body {
 .caption-wrapper .btn-success {
   padding: 13px 20px;
   background-color: #006666;
-  border-radius: 0;
   font-size: 20px;
   font-weight: bold;
   color: #fdbb28;
   margin-bottom: 14px;
   justify-content: center;
   display: flex;
+  border-radius: 15px;
 }
 .caption-wrapper .btn-success:hover {
   border: 1px solid #fdbb28;
@@ -161,32 +212,38 @@ body {
 .scroll {
   height: 500px;
   width: 500px;
-  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
   font-size: 82%;
   overflow: scroll;
 }
 .card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
+  padding: 0px;
   background-color: #006666;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   color: #fdbb28;
-  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  font-family: 'Josefin Sans';
   font-weight: bolder;
   text-align: left;
 }
 
+.comment-username {
+  float: right;
+  font-size: 20px;
+}
+
 .card-body {
   text-align: left;
+  padding: 5px;
 }
+
+.card-text {
+ font-family: 'Baloo 2';
+ font-size: 15px;
+}
+
 
 .title-caption {
   text-align: left;
   font-size: 30px;
-}
-
-.user-caption {
-  text-align: left;
 }
 
 #like-count {
@@ -194,4 +251,21 @@ body {
 }
 #user-col {
   text-align: left;
+}
+
+/* scroll bar designs for comments */ 
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: 5px;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  box-shadow: 5px;
+  -webkit-box-shadow: inset 0 0 6px var(--cadet-blue); 
 }

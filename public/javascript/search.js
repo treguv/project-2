@@ -23,5 +23,5 @@ async function searchPostHandler(event) {
 }
 
 document
-  .querySelector(".search-btn")
+  .querySelector("#search-btn")
   .addEventListener("click", searchPostHandler);

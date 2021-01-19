@@ -10,55 +10,40 @@
 <body>
     <main>
         <div class="flex-container">
-            <div class="caption-section-wrapper">
-                {{!-- the post caption needs to be a heading --}}
+            <div class="col-md-6 mt-4">
 
                 {{!-- post image --}}
-                <img id="post-image" src="{{post.image_url}}" class="card-img-top">
                 <div class="row">
-                    <div class="col-12 col-sm-4">
-                        <p id="like-count"><i class="far fa-heart"></i>{{post.like_count}} 1,345</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-sm-1">
-
-                        {{!-- need to be added to css for styling--}}
-                        <button type="button" class="btn btn-like"><i class="far fa-heart"></i></button>
-                    </div>
+                    <img id="post-image" src="{{post.image_url}}" class="card-img-top">
                 </div>
 
-
-                {{!-- profile pic --}}
+                {{!-- amount of likes post has --}}
                 <div class="row">
-                    <div class="user-caption">
-                        <div class="col-4 col-lg-2" id="profile-col">
-                            <a class="inline-block dot " href="https://github.com/"></a>
-                        </div>
-                    </div>
+                    <button id="like-count" class="btn btn-like"><i class="far fa-heart"></i></button>
+                    <p class="like-display">{{post.like_count}} 1,345</p>
                 </div>
 
-                {{!-- post username and post caption --}}
+                {{!-- user who posted image --}}
                 <div class="row">
-                    <div class="col-12 col-lg-12" id="user-col">
-                        {{post.user.username}} - {{post.post_caption}}
+                    <div id="profile-col">
+                        <a class="inline-block dot " href="https://github.com/"></a>
                     </div>
+                    <p class="pl-3 post-caption"><strong class="post-username">{{post.user.username}}</strong> -
+                        {{post.post_caption}}</p>
                 </div>
             </div>
 
             {{!-- comment text area--}}
-            <div class=" caption-section-wrapper">
-                <div class="caption-wrapper my-auto">
-                    <form class="caption-form">
-
-                        <div class="form-group ">
+            <div class="col-md-6 p-auto">
+                <div class="caption-wrapper">
+                    <form class="offset-3">
+                        <div class="form-group">
                             {{#if loggedIn}}
-                            <h3 class="comment">Comment</h3>
-                            <textarea placeholder="Comment" id="comment" class="form-control" rows="3"
-                                id="comment"></textarea>
+                            <h3 class="comment-title">Comment</h3>
+                            <textarea placeholder="it's a hard time for everyone, be nice to people!" id="comment"
+                                class="text-area-background" rows="3" id="comment"></textarea>
                             <input type="hidden" value={{user_id}} id="session_user">
-                            <button id="post-comment" class="btn btn-success " type="button">Post!
-                            </button>
+                            <button id="post-comment" class="btn btn-success " type="button">Post!</button>
                             {{/if}}
                         </div>
 
@@ -66,13 +51,17 @@
                         {{#if post.comments}}
                         <div class="scroll">
                             {{#each post.comments as |comment| }}
-                            <div class="card">
-                                <div class="card-header"> {{user.username}}
-                                    <a class="inline-block dot " href="https://github.com/"></a>
+                            <div class="container">
+                                <div class="card-header row pl-lg-2">
+                                    <div class = "pt-lg-2">
+                                    <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile --}}
+                                    </div>
+                                    <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who commented --}}
+                                     <p>{{user.username}}</p>
+                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text"> {{comment_text}}</p>
-
+                                <div class="card-body custom-scrollbar">
+                                    <p class="card-text">{{comment_text}}</p> {{!-- actual comment --}}
                                 </div>
                             </div>
                             {{/each}}
