@@ -1,64 +1,113 @@
-<link rel="stylesheet" href="/stylesheets/image-upload.css">
-<main>
-    <div class="container col-12">
-        <div class="row">
+<head>
 
-            <div class="col-lg-6 col-sm-12">
-                <!-- post image -->
-                <div class="mt-3 drop-shadow col-lg-8" id="post-image-card">
-                    <img id="post-image" src="{{post.image_url}}" class="card-img-top">
-                    <!-- shows amount of post likes -->
-                    <p class="mt-2"><i class="far fa-heart"></i>{{post.like_count}} 1,345</p>
-                </div>
-                <div>
-                    <!-- ability to like post -->
-                    <button type="button" class="btn btn-like" id="like-btn"><i class="far fa-heart"></i></button>
-                </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/singlepost.css">
+</head>
 
-                <!-- post caption -->
-                <div class="mt-1 drop-shadow col-lg-6">
-                    <a class="dot-single-post" href="https://github.com/"></a>
-                    <p class="post-user"><strong>{{post.user.username}}</strong> - {{post.post_caption}}</p>
-                </div>
+<body>
+    <main>
+        <div class="flex-container">
+            <div class="caption-section-wrapper">
+                {{!-- the post caption needs to be a heading --}}
 
-
-
-                {{!-- Comment stuff --}}
-                <div class="col-lg-4 col-sm-12">
-                    <div class="form-group py-3  ">
-                        {{#if loggedIn}}
-                        {{!-- if user is loggedIn, display the following --}}
-                        <textarea placeholder="Comment" class=" form-control py-2 drop-shadow" rows="3"
-                            id="comment"></textarea>
-                        {{/if}}
-                        {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
-                        create comment --}}
-                        <input type="hidden" value={{user_id}} id="session_user">
+                {{!-- post image --}}
+                <img id="post-image" src="{{post.image_url}}" class="card-img-top">
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <p id="like-count"><i class="far fa-heart"></i>{{post.like_count}} 1,345</p>
                     </div>
-                    {{#each post.comments as |comment| }}
-                    <div class="card mt-1 drop-shadow">
-                        <p>{{comment_text}}</p>
-                        <p>{{user.username}}</p>
-                        {{/each}}
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-1">
+
+                        {{!-- need to be added to css for styling--}}
+                        <button type="button" class="btn btn-like"><i class="far fa-heart"></i></button>
                     </div>
-                    {{#if loggedIn}}
-                    <div class="col-lg-2">
-                        <button id="post-comment" type="button"
-                            class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
-                        <!-- post comment button -->
-                        {{!-- adding like button --}}
+                </div>
+
+
+                {{!-- profile pic --}}
+                <div class="row">
+                    <div class="user-caption">
+                        <div class="col-4 col-lg-2" id="profile-col">
+                            <a class="inline-block dot " href="https://github.com/"></a>
+                        </div>
                     </div>
-                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
-</main>
-{{!-- Cloudinary upload widget --}}
-{{!--
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"> --}}
-</script>
+                    {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
+                    create comment --}}
+                    <input type="hidden" value={{user_id}} id="session_user">
+                    {{!-- Make post button --}}
+                    {{#if loggedIn}}
+                    <div class="col-lg-2">
+                        <button id="post-comment" type="button"
+                            class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
 
-<script src="/javascript/comment.js"></script>
-<script src="/javascript/like.js"></script>
+                {{!-- post username and post caption --}}
+                {{!-- <div class="row">
+                    <div class="col-12 col-lg-12" id="user-col">
+                        {{post.user.username}} - {{post.post_caption}}
+                    </div>
+                </div>
+            </div> --}}
+
+            {{!-- comment text area--}}
+            <div class=" caption-section-wrapper">
+                <div class="caption-wrapper my-auto">
+                    <form class="caption-form">
+
+                        <div class="form-group ">
+                            {{#if loggedIn}}
+                            <h3 class="comment">Comment</h3>
+                            <textarea placeholder="Comment" id="comment" class="form-control" rows="3"
+                                id="comment"></textarea>
+                            <input type="hidden" value={{user_id}} id="session_user">
+                            <button id="post-comment" class="btn btn-success " type="button">Post!
+                            </button>
+                            {{/if}}
+                        </div>
+
+                        {{!-- comment section scroll--}}
+                        {{#if post.comments}}
+                        <div class="scroll">
+                            {{#each post.comments as |comment| }}
+                            <div class="card">
+                                <div class="card-header"> {{user.username}}
+                                    <a class="inline-block dot " href="https://github.com/"></a>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"> {{comment_text}}</p>
+
+                                </div>
+                            </div>
+                            {{/each}}
+                            {{/if}}
+                        </div>
+                    </form>
+
+                    {{!-- being used in JS -- to pass value from ROUTE to JS--}}
+                    <input type="hidden" value={{user_id}} id="user_id">
+                    <input type="hidden" value={{user_id}} id="session_user">
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    {{!--
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"> --}}
+    </script>
+    <script src="./javascript/image.js"></script>
+    <script src="/javascript/comment.js"></script>
+    <script src="/javascript/like.js"></script>
+</body>

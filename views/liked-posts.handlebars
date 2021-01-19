@@ -2,12 +2,18 @@
     <div class="container">
         <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Liked Posts</h2>
     </div>
-    {{#if posts.length}}
+    <div class="row">
+        {{#each likedPosts as |aPost|}}
+        {{> post aPost.post}}
+        {{/each}}
+    </div>
+    {{!-- {{#if posts.length}}
     <!-- posts go here -->
 
-    {{#each posts as |post|}}
-    {{> post post}}
+    {{#each posts as |aPost|}}
+    <img src="{{aPost.image_url}}" class="card-img-top">
+    {{> post aPost}}
     {{/each}}
 
-    {{/if}}
+    {{/if}} --}}
 </section>

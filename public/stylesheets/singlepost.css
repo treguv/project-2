@@ -1,52 +1,10 @@
-/* Vlads image-upload style just incase! */
-/* Add drop shadow */
-/* .drop-shadow {
-  filter: drop-shadow(2px 2px 0.2rem black);
-}
-
-#post-image-card {
-  max-height: fit-content;
-  max-width: auto;
-}
-#post-image {
-  max-height: fit-content;
-  max-width: auto;
-}
-.inline-block {
-  display: inline-block;
-}
-.inline {
-  display: inline;
+/* .box-border {
+  border: 1px sold;
 } */
-/* .fill-in-image {
-  object-fit: cover;
-  max-height: 50%;
-  max-width: 50%;
-} */
-
-/* .fill-in {
-  max-height: 100%;
-  max-width: 100%;
-} */
-
-/* Vlads image-upload style just incase! */
-
-:root {
-  --smoky-black: #1c110a;
-  --dutch-white: #e4d6a7;
-  --yellow-sun: #e9b44c;
-  --rufous: #9b2915;
-  --cadet-blue: #50a2a7;
-}
-
 body {
-  font-family: "Karla", sans-serif;
-  background-color: #fff;
+  /* font-family: "Karla", sans-serif; */
+  /* background-color: #fff; */
   min-height: 100vh;
-}
-
-.image {
-  max-width: 100%;
 }
 
 .caption-section-wrapper {
@@ -58,35 +16,18 @@ body {
   padding: 68px 100px;
   background-color: #fff;
 }
-
-/* single-post image view */
-.card-img-top {
-  border-radius: 10px;
-}
-
-.btn-like {
-  max-width: 5%;
-  max-height: 10%;
-  background-color: var(--cadet-blue);
-}
-
-.post-user {
-  font-family: "Josefin Sans";
-  font-size: 25px;
-}
-
-.dot-single-post {
-  height: 70px;
-  width: 70px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
 @media (max-width: 991px) {
   .caption-section-wrapper {
     padding-left: 50px;
     padding-right: 50px;
+  }
+}
+@media (max-width: 575px) {
+  .caption-section-wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* min-height: 100vh; */
+    display: block;
   }
 }
 
@@ -96,7 +37,6 @@ body {
   padding-top: 24px;
   padding-bottom: 24px;
 }
-
 @media (max-width: 575px) {
   .caption-wrapper {
     width: 100%;
@@ -138,7 +78,7 @@ body {
   border-radius: 0;
   font-size: 20px;
   font-weight: bold;
-  color: #fff;
+  color: #fdbb28;
   margin-bottom: 14px;
   justify-content: center;
   display: flex;
@@ -215,4 +155,43 @@ body {
 
 #tag {
   margin-right: 20px;
+}
+
+/* scroll stuff  */
+.scroll {
+  height: 500px;
+  width: 500px;
+  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 82%;
+  overflow: scroll;
+}
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #006666;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color: #fdbb28;
+  font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  text-align: left;
+}
+
+.card-body {
+  text-align: left;
+}
+
+.title-caption {
+  text-align: left;
+  font-size: 30px;
+}
+
+.user-caption {
+  text-align: left;
+}
+
+#like-count {
+  text-align: left;
+}
+#user-col {
+  text-align: left;
 }
