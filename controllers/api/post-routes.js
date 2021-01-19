@@ -13,14 +13,24 @@ router.get("/", (req, res) => {
       "image_url",
       "tags",
       // literal SQL query to return post likes
-      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      // [
+      //   sequelize.literal(
+      //     "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
+      //   ),
+      //   "like_count",
+      // ],
     ],
     include: [
       {
         model: User,
-        attributes: ["username"]
-      }
-    ]
+        attributes: ["username"],
+      },
+      {
+        model: Like,
+        as: "likes",
+        attributes: ["id", "user_id"],
+      },
+    ],
   })
     .then((postData) => res.json(postData))
     .catch((err) => {
@@ -40,7 +50,12 @@ router.get("/:id", (req, res) => {
       "post_caption",
       "created_at",
       "image_url",
-      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
+        ),
+        "like_count",
+      ],
     ],
     include: [
       {
@@ -56,13 +71,13 @@ router.get("/:id", (req, res) => {
         include: {
           model: User,
           attributes: ["username"],
-        }
+        },
       },
       {
         model: User,
         attributes: ["username"],
-      }
-    ]
+      },
+    ],
   })
     .then((postData) => {
       if (!postData) {
@@ -94,27 +109,47 @@ router.post("/", (req, res) => {
     });
 });
 
+//add a like to a post
+router.post("/like", (req, res) => {
+  Like.create({
+    user_id: 3, //req.session.user_id,
+    post_id: req.body.post_id,
+  })
+    .then((dbLikeData) => {
+      res.json(dbLikeData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // MUST BE BEFORE OTHER PUT ROUTES (will create error otherwise)
 router.put("/like", (req, res) => {
   Like.create({
     user_id: req.body.user_id,
-    post_id: req.body.post_id
-  })
+    post_id: req.body.post_id,
+  });
   // then find the post user liked
   return Post.findOne({
     where: {
-      id: req.body.post_id
+      id: req.body.post_id,
     },
     attributes: [
-      'id',
-      'post_caption',
-      'image_url',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
-    ]
+      "id",
+      "post_caption",
+      "image_url",
+      "created_at",
+      [
+        sequelize.literal(
+          "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
+        ),
+        "like_count",
+      ],
+    ],
   })
-    .then(likeData => res.json(likeData))
-    .catch(err => {
+    .then((likeData) => res.json(likeData))
+    .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
