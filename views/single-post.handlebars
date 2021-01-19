@@ -38,73 +38,84 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        </div>
+        {{!-- retrieving user_id and hiding because (user id will display on html) user_id is needed to
+        create comment --}}
+        <input type="hidden" value={{user_id}} id="session_user">
+        {{!-- Make post button --}}
+        {{#if loggedIn}}
+        <div class="col-lg-2">
+            <button id="post-comment" type="button" class="my-3 mx-0  px-5 py-4 btn btn-light ">Post</button>
 
-                {{!-- post username and post caption --}}
-                <div class="row">
-                    <div class="col-12 col-lg-12" id="user-col">
-                        {{post.user.username}} - {{post.post_caption}}
-                    </div>
+            {{!-- post username and post caption --}}
+            <div class="row">
+                <div class="col-12 col-lg-12" id="user-col">
+                    {{post.user.username}} - {{post.post_caption}}
                 </div>
-
-                {{!-- edit button --}}
-                <div class="row">
-                    <div class="col-12 col-lg-12" id="edit-caption">
-                    </div>
-                </div>
-                {{!-- edit text-area --}}
-                {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
-                {{#if post_owner}}
-                <div class="row">
-                    <div class="col-12 col-lg-6" id="edit-button">
-                        <a href="/api/posts/editpost/{{post.id}}" id="edit" class="btn btn-success" type="submit">Edit
-                        </a>
-                    </div>
-
-                </div>
-                {{/if}}
-
-
             </div>
 
-            {{!-- comment text area--}}
-            <div class=" caption-section-wrapper">
-                <div class="caption-wrapper my-auto">
-                    <form class="caption-form">
+            {{!-- edit button --}}
+            <div class="row">
+                <div class="col-12 col-lg-12" id="edit-caption">
+                </div>
+            </div>
+            {{!-- edit text-area --}}
+            {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
+            {{#if post_owner}}
+            <div class="row">
+                <div class="col-12 col-lg-6" id="edit-button">
+                    <a href="/api/posts/editpost/{{post.id}}" id="edit" class="btn btn-success" type="submit">Edit
+                    </a>
+                </div>
 
-                        <div class="form-group ">
-                            {{#if loggedIn}}
-                            <h3 class="comment">Comment</h3>
-                            <textarea placeholder="Comment" id="comment" class="form-control" rows="3"
-                                id="comment"></textarea>
-                            <input type="hidden" value={{user_id}} id="session_user">
-                            <button id="post-comment" class="btn btn-success " type="button">Post!
-                            </button>
-                            {{/if}}
-                        </div>
+            </div>
+            {{/if}}
 
-                        {{!-- comment section scroll--}}
-                        {{#if post.comments}}
-                        <div class="scroll">
-                            {{#each post.comments as |comment| }}
-                            <div class="card">
-                                <div class="card-header"> {{user.username}}
-                                    <a class="inline-block dot " href="https://github.com/"></a>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text"> {{comment_text}}</p>
 
-                                </div>
+        </div>
+        </div>
+
+        {{!-- comment text area--}}
+        <div class=" caption-section-wrapper">
+            <div class="caption-wrapper my-auto">
+                <form class="caption-form">
+
+                    <div class="form-group ">
+                        {{#if loggedIn}}
+                        <h3 class="comment">Comment</h3>
+                        <textarea placeholder="Comment" id="comment" class="form-control" rows="3"
+                            id="comment"></textarea>
+                        <input type="hidden" value={{user_id}} id="session_user">
+                        <button id="post-comment" class="btn btn-success " type="button">Post!
+                        </button>
+                        {{/if}}
+                    </div>
+
+                    {{!-- comment section scroll--}}
+                    {{#if post.comments}}
+                    <div class="scroll">
+                        {{#each post.comments as |comment| }}
+                        <div class="card">
+                            <div class="card-header"> {{user.username}}
+                                <a class="inline-block dot " href="https://github.com/"></a>
                             </div>
-                            {{/each}}
-                            {{/if}}
-                        </div>
-                    </form>
+                            <div class="card-body">
+                                <p class="card-text"> {{comment_text}}</p>
 
-                    {{!-- being used in JS -- to pass value from ROUTE to JS--}}
-                    <input type="hidden" value={{user_id}} id="user_id">
-                    <input type="hidden" value={{user_id}} id="session_user">
-                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </form>
+
+                {{!-- being used in JS -- to pass value from ROUTE to JS--}}
+                <input type="hidden" value={{user_id}} id="user_id">
+                <input type="hidden" value={{user_id}} id="session_user">
             </div>
+        </div>
         </div>
     </main>
 
