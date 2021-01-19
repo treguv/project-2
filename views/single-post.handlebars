@@ -45,6 +45,25 @@
                         {{post.user.username}} - {{post.post_caption}}
                     </div>
                 </div>
+
+                {{!-- edit button --}}
+                <div class="row">
+                    <div class="col-12 col-lg-12" id="edit-caption">
+                    </div>
+                </div>
+                {{!-- edit text-area --}}
+                {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
+                {{#if post_owner}}
+                <div class="row">
+                    <div class="col-12 col-lg-6" id="edit-button">
+                        <a href="/api/posts/editpost/{{post.id}}" id="edit" class="btn btn-success" type="submit">Edit
+                        </a>
+                    </div>
+
+                </div>
+                {{/if}}
+
+
             </div>
 
             {{!-- comment text area--}}
@@ -96,7 +115,11 @@
     {{!--
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"> --}}
     </script>
+
+
     <script src="./javascript/image.js"></script>
     <script src="/javascript/comment.js"></script>
-    <script src="/javascript/like.js"></script>
+    <script src="/javascript/edit-post.js"></script>
+    {{!--
+    <script src="/javascript/like.js"></script> --}}
 </body>

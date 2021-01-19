@@ -54,6 +54,7 @@ Comment.belongsTo(User, {
 // comment left on one post
 Comment.belongsTo(Post, {
   foreignKey: "post_id",
+  onDelete: "cascade"
 });
 
 // user can leave many comments
@@ -64,6 +65,7 @@ User.hasMany(Comment, {
 // post can have many comments
 Post.hasMany(Comment, {
   foreignKey: "post_id",
+  onDelete: "cascade"
 });
 
 module.exports = { User, Post, Like, Comment };

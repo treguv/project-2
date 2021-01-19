@@ -195,3 +195,9 @@ body {
 #user-col {
   text-align: left;
 }
+#edit-button {
+  text-align: center;
+}
+#delete-button {
+  text-align: center;
+}
