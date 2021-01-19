@@ -30,16 +30,16 @@ router.get('/', withAuth, (req, res) => {
                 attributes: ['username']
             }
         ]
+
     })
         .then(postData => {
-            const posts = postData.map(post => post.get({ plain: true })); // serialize data 
-            console.log(posts);
+            const posts = postData.map(post => post.get({ plain: true })); // serialize data
             res.render('profile-page', { posts, loggedIn: true });
         })
         .catch(err => {
-            console.log(err); 
-            res.status(500).json(err); 
+            console.log(err);
+            res.status(500).json(err);
         });
-}); 
+});
 
 module.exports = router; 

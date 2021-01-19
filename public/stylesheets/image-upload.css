@@ -31,10 +31,23 @@
 
 /* Vlads image-upload style just incase! */
 
+:root {
+  --smoky-black: #1c110a;
+  --dutch-white: #e4d6a7;
+  --yellow-sun: #e9b44c;
+  --rufous: #9b2915;
+  --cadet-blue: #50a2a7;
+}
+
 body {
   font-family: "Karla", sans-serif;
   background-color: #fff;
   min-height: 100vh;
+}
+
+
+.image {
+  max-width: 100%;
 }
 
 .caption-section-wrapper {
@@ -46,18 +59,35 @@ body {
   padding: 68px 100px;
   background-color: #fff;
 }
+
+/* single-post image view */ 
+.card-img-top {
+  border-radius: 10px;
+}
+
+.btn-like {
+  max-width: 5%;
+  max-height: 10%;
+  background-color: var(--cadet-blue);
+}
+
+.post-user {
+  font-family: 'Josefin Sans';
+  font-size: 25px; 
+}
+
+.dot-single-post {
+  height: 70px;
+  width: 70px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 @media (max-width: 991px) {
   .caption-section-wrapper {
     padding-left: 50px;
     padding-right: 50px;
-  }
-}
-@media (max-width: 575px) {
-  .caption-section-wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* min-height: 100vh; */
-    display: block;
   }
 }
 
@@ -67,6 +97,7 @@ body {
   padding-top: 24px;
   padding-bottom: 24px;
 }
+
 @media (max-width: 575px) {
   .caption-wrapper {
     width: 100%;
@@ -186,3 +217,8 @@ body {
 #tag {
   margin-right: 20px;
 }
+
+
+
+
+
