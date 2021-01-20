@@ -54,10 +54,21 @@ body {
 .post-caption {
   font-family: 'Josefin Sans';
   font-size: 25px;
+  text-align: left;
+}
+
+#post-info-small {
+  display: none;
 }
 
 .comment-title {
   font-family: 'Baloo 2';
+  text-align: left;
+}
+
+.exisiting-comments {
+  font-family: 'Baloo 2'; 
+  font-size: 20px;
   text-align: left;
 }
 
@@ -324,5 +335,42 @@ body {
     font-size: 15px; 
     padding-left: 5px;
     padding-top: 5px;
+  }
+
+  .text-area-background {
+    width: 100%;
+  }
+
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 60px;
+    font-size: 15px;
+  }
+
+  #post-info-large {
+    display: none;
+  }
+
+  #post-info-small {
+    display: block;
+  }
+
+  .post-caption {
+    text-align: left;
+  }
+
+  .like-display {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+    margin-right: -10px;
+  }
+
+  .btn-like {
+    text-align: center; 
+    min-height: 100%;
+    font-size: 20px;
+    margin-bottom: 12px;
+    margin-left: 15px;
   }
 }

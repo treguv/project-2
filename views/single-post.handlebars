@@ -13,23 +13,34 @@
             <div class="col-md-6 mt-4">
 
                 {{!-- post image --}}
-                <div class = "row">
+                <div class="row">
                     <img id="post-image" src="{{post.image_url}}" class="card-img-top">
                 </div>
 
-                {{!-- amount of likes post has --}}
+                {{!-- like button and amount of likes post has --}}
                 <div class="row">
                     <button id="like-count" class="btn btn-like"><i class="far fa-heart enhance-heart"></i></button>
-                    <p class="like-display">{{post.like_count}} 1,345</p>
+                    <p class="like-display">{{post.like_count}}1,345</p> {{!-- will dynamically display number of post likes --}}
                 </div>
 
                 {{!-- user who posted image --}}
-                <div id = "post-info-large" class="row">
+                <div id = "post-info-large" class="row"> {{!-- this will display on large devices and hidden in smaller devices --}}
                     <div id="profile-col">
                         <a class="inline-block dot " href="https://github.com/"></a>
                     </div>
-                    <p class="post-caption"><strong class="post-username">{{post.user.username}}</strong> -
+                    <p class="post-caption ml-2 mt-1"><strong class="post-username">{{post.user.username}}</strong> -
                         {{post.post_caption}}</p>
+                </div>
+
+
+                <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger devices --}}
+                    <div id="profile-col" class="row">
+                        <a class="inline-block dot " href="https://github.com/"></a>
+                        <p class="ml-2"><strong class="post-username">{{post.user.username}}</strong></p>
+                    </div>
+                    <div class="row">
+                        <p class="post-caption"> - {{post.post_caption}}</p>
+                    </div>
                 </div>
             </div>
 
@@ -50,16 +61,20 @@
 
                         {{!-- comment section scroll--}}
                         {{#if post.comments}}
+
+                        <h1 class="exisiting-comments mt-5">comments -</h1>
                         <div class="scroll">
                             {{#each post.comments as |comment| }}
                             <div class="container">
                                 <div class="card-header row pl-lg-2">
-                                    <div class = "pt-lg-2">
-                                    <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile --}}
+                                    <div class="pt-lg-2">
+                                        <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile
+                                        --}}
                                     </div>
-                                    <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who commented --}}
-                                     <p>{{user.username}}</p>
-                                     </div>
+                                    <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who
+                                        commented --}}
+                                        <p>{{user.username}}</p>
+                                    </div>
                                 </div>
                                 <div class="card-body custom-scrollbar">
                                     <p class="card-text">{{comment_text}}</p> {{!-- actual comment --}}
