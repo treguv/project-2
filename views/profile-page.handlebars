@@ -2,38 +2,42 @@
     <link rel="stylesheet" href="/stylesheets/homepage.css">
 </head>
 
-<div class="d-flex justify-content-center">
-    {{!-- <span class="profile-pic mb-4 mt-5"></span> --}}
-    <div id="pfp"> {{> pfp this}}</div>
-</div>
-<h1 class="d-flex justify-content-center mb-2 profile-username">{{username}}</h1>
-<div class="d-flex justify-content-center">
-    <button type="button" class="btn create-post-btn" id="create-post">Create Post</button>
-</div>
-
-<section>
-    <div class="container">
-        <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Your Posts</h2>
+<div class = "mt-5">
+    {{!-- profile photo --}}
+    <div class="d-flex justify-content-center">
+        <div id="pfp"> {{> pfp this}}</div>
     </div>
+     {{!-- username --}}
+    <h1 class="d-flex justify-content-center mb-2 mt-3 profile-username">{{username}}</h1>
+    {{!-- 'create post' button that re-routes to /image --}}
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn create-post-btn" id="create-post">Create Post</button>
+    </div>
+</div>
 
-    <div class="container">
-        {{#if posts.length}}
-        <!-- posts go here -->
-        {{!-- Added row --}}
-        <div class="row">
-            {{#each posts}}
-            <div class="col-lg-2 col-sm-6 col-md-3 m-sm-2">
-                <a href="/api/posts/viewpost/{{id}}">
-                    <div class="mt-3 mouse-over card-image">
-                        <img id="homepage-post-imgs" src="{{image_url}}" class="card-img-top">
-                    </div>
-                </a>
-            </div>
-            {{/each}}
+<div class="container">
+    <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Your Posts</h2>
+</div>
+
+<div class="flex-container">
+    {{#if posts.length}}
+    <!-- posts go here -->
+    {{!-- Added row --}}
+    <div class="row">
+        {{#each posts}}
+        <div class="col-lg-2 col-sm-6 col-md-3 m-sm-2">
+            <a href="/api/posts/viewpost/{{id}}">
+                <div class="mt-3 mouse-over card-image">
+                    <img id="homepage-post-imgs" src="{{image_url}}" class="card-img-top">
+                </div>
+            </a>
         </div>
-        {{/if}}
+        {{/each}}
     </div>
-</section>
+    {{/if}}
+</div>
+
+
 <input type="hidden" value={{user_id}} id="session_user">
 <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="/javascript/profile-page.js"></script>

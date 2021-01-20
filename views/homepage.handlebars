@@ -2,10 +2,10 @@
     <link rel="stylesheet" href="/stylesheets/homepage.css">
 </head>
 <!-- renders posts of all users -->
-<div class="container col-12">
+<div class="flex-container">
     <div class="row">
         {{#each posts}}
-        <div class="col-lg-2 col-sm-6 col-md-3">
+        <div class="col-lg-2 col-sm-6 col-md-3 m-sm-2">
             <a href="/api/posts/viewpost/{{id}}">
                 <div class="mt-3 mouse-over card-image">
                     <img id="homepage-post-imgs" src="{{image_url}}" class="card-img-top">
@@ -14,4 +14,4 @@
         </div>
         {{/each}}
     </div>
-</div>
+    </div>
