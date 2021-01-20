@@ -70,7 +70,7 @@ body {
   text-align: left;
 }
 
-.exisiting-comments {
+.existing-comments {
   font-family: 'Baloo 2'; 
   font-size: 20px;
   text-align: left;
@@ -264,7 +264,7 @@ body {
 
 .card-text {
   font-family: "Baloo 2";
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .title-caption {
@@ -287,11 +287,11 @@ body {
 
 ::-webkit-scrollbar-track {
   box-shadow: 5px;
-  border-radius: 0px;
+  border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 0px;
+  border-radius: 15px;
   box-shadow: 5px;
   -webkit-box-shadow: inset 0 0 6px var(--cadet-blue);
 }
@@ -372,19 +372,98 @@ body {
   }
 }
 
-
 @media (max-width: 767.98px) {
-  
-  #post-info-large {
-    display: none;
+  .text-area-background {
+    width: 100%;
   }
 
-  #post-info-small {
-    display: none;
+  .scroll {
+    width: 100%; 
+    height: 250px;
   }
 
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
 }
 
+@media (min-width: 768px) {
+  .text-area-background {
+    width: 120%;
+  }
+
+  .scroll {
+    width: 120%; 
+    height: 300px;
+  }
+
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .text-area-background {
+    width: 100%;
+  }
+
+  .scroll {
+    width: 120%; 
+    height: 300px;
+  }
+
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 993px) {
+  .text-area-background {
+    width: 170%;
+  }
+
+  .scroll {
+    width: 170%; 
+    height: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .text-area-background {
+    width: 200%;
+  }
+
+  .scroll {
+    width: 150%; 
+    height: 300px;
+  }
+
+  
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .text-area-background {
+    width: 500px; 
+  }
+
+  .scroll {
+    height: 500px;
+    width: 500px;
+    font-size: 82%;
+    overflow: scroll;
+  }
+}
 
 /* Styling for the profile picture */
 .lim-width img {

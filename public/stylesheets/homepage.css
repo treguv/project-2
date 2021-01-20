@@ -1,4 +1,4 @@
-
+/* gives a fixed width and height for homepage/profile-page/liked-post-page images */
 img {
   width: 200px;
   height: 300px;
