@@ -142,7 +142,7 @@ body {
 .card-header {
   padding: 0px;
   background-color: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 0px;
   color: #fdbb28;
   font-family: "Josefin Sans";
   font-weight: bolder;
@@ -156,6 +156,7 @@ body {
 .card-body {
   text-align: left;
   padding: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .card-text {
