@@ -10,7 +10,6 @@ body {
   --cadet-blue: #50a2a7;
 }
 
-
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
