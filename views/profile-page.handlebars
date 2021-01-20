@@ -2,12 +2,12 @@
     <link rel="stylesheet" href="/stylesheets/homepage.css">
 </head>
 
-<div class = "mt-5">
+<div class="mt-5">
     {{!-- profile photo --}}
     <div class="d-flex justify-content-center">
         <div id="pfp"> {{> pfp this}}</div>
     </div>
-     {{!-- username --}}
+    {{!-- username --}}
     <h1 class="d-flex justify-content-center mb-2 mt-3 profile-username">{{username}}</h1>
     {{!-- 'create post' button that re-routes to /image --}}
     <div class="d-flex justify-content-center">
@@ -19,23 +19,25 @@
     <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Your Posts</h2>
 </div>
 
-<div class="flex-container">
-    {{#if posts.length}}
-    <!-- posts go here -->
-    {{!-- Added row --}}
-    <div class="row">
-        {{#each posts}}
-        <div class="col-lg-2 col-sm-6 col-md-3 m-sm-2">
-            <a href="/api/posts/viewpost/{{id}}">
-                <div class="mt-3 mouse-over card-image">
-                    <img id="homepage-post-imgs" src="{{image_url}}" class="card-img-top">
-                </div>
-            </a>
+    <div class="container col-12">
+        {{#if posts.length}}
+        <!-- posts go here -->
+        {{!-- Added row --}}
+        <div class="row">
+            {{#each posts}}
+            <div class="col-lg-2 col-sm-6 col-md-3">
+                <a href="/api/posts/viewpost/{{id}}">
+                    <div class="mt-3 mouse-over card-image">
+                        <img src="{{image_url}}" class="card-img-top">
+                    </div>
+                </a>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
+        {{/if}}
     </div>
-    {{/if}}
-</div>
+
+
 
 
 <input type="hidden" value={{user_id}} id="session_user">
