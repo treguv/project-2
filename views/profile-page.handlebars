@@ -17,22 +17,16 @@
 <div class="container">
     <h2 class="col mt-4 d-flex justify-content-center mt-5 mb-4 your-posts">Your Posts</h2>
 </div>
-    <div class="container col-12">
-        {{#if posts.length}}
-        <!-- posts go here -->
-        <div class="row">
-            {{#each posts}}
-            <div class="col-lg-2 col-sm-6 col-md-6">
-                <a href="/api/posts/viewpost/{{id}}">
-                    <div class="mt-3 mouse-over card-image">
-                        <img src="{{image_url}}" class="card-img-top">
-                    </div>
-                </a>
-            </div>
-            {{/each}}
-        </div>
-        {{/if}}
+<div class="container col-12">
+    {{#if posts.length}}
+    <!-- posts go here -->
+    <div class="row">
+        {{#each posts as |post|}}
+        {{> post post}}
+        {{/each}}
     </div>
+    {{/if}}
+</div>
 
 {{!-- hidden input value to retrieve user_id --}}
 <input type="hidden" value={{user_id}} id="session_user">
