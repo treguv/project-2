@@ -13,7 +13,7 @@
             <div class="col-md-6 mt-4">
 
                 {{!-- post image --}}
-                <div class = "row">
+                <div class="row">
                     <img id="post-image" src="{{post.image_url}}" class="card-img-top">
                 </div>
 
@@ -24,9 +24,10 @@
                 </div>
 
                 {{!-- user who posted image --}}
-                <div id = "post-info-large" class="row">
-                    <div id="profile-col">
-                        <a class="inline-block dot " href="https://github.com/"></a>
+                <div id="post-info-large" class="row">
+                    <div id="profile-col" class="lim-width px-2">
+                        {{!-- <a class="inline-block dot " href="https://github.com/"></a> --}}
+                        {{>pfp post.user}}
                     </div>
                     <p class="post-caption"><strong class="post-username">{{post.user.username}}</strong> -
                         {{post.post_caption}}</p>
@@ -54,12 +55,14 @@
                             {{#each post.comments as |comment| }}
                             <div class="container">
                                 <div class="card-header row pl-lg-2">
-                                    <div class = "pt-lg-2">
-                                    <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile --}}
+                                    <div class="pt-lg-2">
+                                        <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile
+                                        --}}
                                     </div>
-                                    <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who commented --}}
-                                     <p>{{user.username}}</p>
-                                     </div>
+                                    <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who
+                                        commented --}}
+                                        <p>{{user.username}}</p>
+                                    </div>
                                 </div>
                                 <div class="card-body custom-scrollbar">
                                     <p class="card-text">{{comment_text}}</p> {{!-- actual comment --}}

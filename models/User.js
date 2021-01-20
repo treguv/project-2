@@ -39,6 +39,12 @@ User.init(
         len: [4],
       },
     },
+    profile_photo: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue:
+        "https://res.cloudinary.com/quarantinepics/image/upload/v1611112850/images/cnhuvaksqdazwbd6g0jm.jpg",
+    },
   },
 
   {
