@@ -218,7 +218,7 @@ router.get("/viewpost/:id", (req, res) => {
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username", "profile_photo"],
       },
     ],
   }).then((dbPostData) => {
