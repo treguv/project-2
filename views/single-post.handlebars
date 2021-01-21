@@ -11,12 +11,12 @@
         <div class="row ml-lg-2">
             <img id="post-image" src="{{post.image_url}}" class="card-img-top">
         </div>
+        
         {{!-- like button and amount of likes post has --}}
-        <div class="row">
+        <div id = "like-row" class="row">
             <button id="like-btn" class="btn btn-like"><i class="far fa-heart enhance-heart"></i></button>
-            <p class="like-display">{{like_count}}</p> {{!-- will dynamically display number of post likes
-            --}}<p class="tags">#{{post.tags}}</p>
-
+            <p class="like-display">{{like_count}}</p> {{!-- will dynamically display number of post likes--}}
+            <p class="tags">#{{post.tags}}</p>
         </div>
         {{!-- user who posted image --}}
         <div id="post-info-large" class="row">
@@ -27,14 +27,8 @@
                 {{post.post_caption}}</p>
 
             <div id="already_liked_msg"></div>
-
-            {{!-- edit text-area --}}
-            {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
-            {{#if post_owner}}
-            <a href="/api/posts/editpost/{{post.id}}" id="edit_post" class="btn btn-success" type="submit">Edit
-            </a>
-            {{/if}}
         </div>
+       
         <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger
             devices --}}
             <div class="row">
@@ -46,6 +40,14 @@
             <div class="row">
                 <p class="post-caption"> - {{post.post_caption}}</p>
             </div>
+        </div>
+         <div class = "mt-2"> 
+            {{!-- edit text-area --}}
+            {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
+            {{#if post_owner}}
+            <a href="/api/posts/editpost/{{post.id}}" id="edit_post" class="btn edit-post-btn" type="submit">Edit-Post
+            </a>
+            {{/if}}
         </div>
     </div>
     {{!-- comment text area--}}

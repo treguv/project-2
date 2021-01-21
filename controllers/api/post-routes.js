@@ -232,14 +232,68 @@ router.get("/viewpost/:id", (req, res) => {
   }).then((dbPostData) => {
     // console.log(dbPostData);
     const post = dbPostData.get({ plain: true }); // serialize all the posts
-    console.log(post);
+    console.log(post.user.username, req.session.username);
     const like_count = post.likes.length;
-    res.render("single-post", {
-      post,
-      like_count,
-      loggedIn: req.session.loggedIn,
-      user_id: req.session.user_id,
-    });
+
+    if (post.user.username == req.session.username) {
+      res.render("single-post", {
+        post,
+        like_count,
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id,
+        post_owner: true
+      });
+    } else {
+      res.render("single-post", {
+        post,
+        like_count,
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id,
+      });
+    }
+  });
+});
+
+//Edit caption
+router.get("/editpost/:id", (req, res) => {
+  //expects  the id of the post to render
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  }).then((dbPostData) => {
+    // console.log(dbPostData);
+    const post = dbPostData.get({ plain: true }); // serialize all the posts
+    console.log(post.user.username, req.session.username);
+
+    if (post.user.username == req.session.username) {
+      res.render("edit-post", {
+        post,
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id,
+        post_owner: true
+      });
+    } else {
+      res.render("edit-post", {
+        post,
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id,
+      });
+    }
   });
 });
 
