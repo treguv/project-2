@@ -32,6 +32,28 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//get the users profile photo url
+router.post("/pfp", (req, res) => {
+  console.log("recieved request");
+  User.findOne({
+    attributes: ["profile_photo"],
+    where: {
+      id: req.session.user_id,
+    },
+  })
+    .then((userData) => {
+      const serialUserData = userData.get({ plain: true });
+      console.log(serialUserData);
+      res.json({
+        profile_photo: serialUserData.profile_photo,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 //login route
 router.post("/login", (req, res) => {
   console.log(req.body);
@@ -61,7 +83,8 @@ router.post("/login", (req, res) => {
   });
 });
 
-//logout route
+
+//logout route  
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -101,6 +124,8 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+
 // make sure to pass in req.body in put routes
 router.put("/:id", (req, res) => {
   User.update(req.body, {
@@ -126,6 +151,9 @@ router.put("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
 
 router.delete("/:id", (req, res) => {
   User.destroy({

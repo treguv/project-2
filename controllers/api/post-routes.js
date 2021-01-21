@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Post, User, Like, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 //find all post
 router.get("/", (req, res) => {
@@ -94,6 +94,7 @@ router.get("/:id", (req, res) => {
 
 // expects ~ post_caption, user_id ,image_url *****
 router.post("/", (req, res) => {
+  console.log(req.body.tags)
   Post.create({
     post_caption: req.body.post_caption,
     user_id: req.body.user_id,
@@ -127,7 +128,7 @@ router.post("/like", (req, res) => {
 // MUST BE BEFORE OTHER PUT ROUTES (will create error otherwise)
 router.put("/like", (req, res) => {
   Like.create({
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     post_id: req.body.post_id,
   });
   // then find the post user liked
@@ -181,7 +182,8 @@ router.put("/:id", (req, res) => {
 });
 
 //delete post route
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
+  console.log("id", req.params.id);
   Post.destroy({
     where: {
       id: req.params.id,
@@ -213,12 +215,13 @@ router.get("/viewpost/:id", (req, res) => {
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "profile_photo"],
         },
       },
       {
         model: User,
         attributes: ["username", "profile_photo"],
+
       },
       {
         model: Like,
@@ -240,20 +243,23 @@ router.get("/viewpost/:id", (req, res) => {
   });
 });
 
-//Search for a given post
+//Select/search for a tag
 router.get("/search/:query", (req, res) => {
+  console.log(req.params.query)
   Post.findAll({
     where: {
       tags: req.params.query,
     },
   }).then((dbPostData) => {
     console.log("request recieved");
+
     // console.log(dbPostData.get({ plain: true }));
     const posts = dbPostData.map((post) => post.get({ plain: true })); // serialize all the posts
-    console.log("found posts", posts);
+
+    // console.log("found posts", posts);
     res.render("search-posts", {
       loggedIn: req.session.loggedIn,
-      posts,
+      posts
     });
   });
 });

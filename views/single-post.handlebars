@@ -5,32 +5,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/singlepost.css">
 </head>
-
 <div class="flex-container">
     <div class="col-md-12 col-lg-6 mt-4">
-
         {{!-- post image --}}
         <div class="row ml-lg-2">
             <img id="post-image" src="{{post.image_url}}" class="card-img-top">
         </div>
-
         {{!-- like button and amount of likes post has --}}
         <div class="row">
             <button id="like-btn" class="btn btn-like"><i class="far fa-heart enhance-heart"></i></button>
-            <p class="like-display">{{like_count}}</p> {{!-- will dynamically display number of post likes --}}
-        </div>
+            <p class="like-display">{{like_count}}1,345</p> {{!-- will dynamically display number of post likes
+            --}}<p class="tags">#{{post.tags}}</p>
 
+        </div>
         {{!-- user who posted image --}}
         <div id="post-info-large" class="row">
-                <div id="profile-col" class="lim-width px-2">
-                    {{>pfp post.user}}
-                </div>
-                <p class="post-caption ml-2 mt-1"><strong class="post-username">{{post.user.username}}</strong> -
-                    {{post.post_caption}}</p>
+            <div id="profile-col" class="lim-width px-2">
+                {{>pfp post.user}}
+            </div>
+            <p class="post-caption ml-2 mt-1"><strong class="post-username">{{post.user.username}}</strong> -
+                {{post.post_caption}}</p>
+
+            <div id="already_liked_msg"></div>
+
+            {{!-- edit text-area --}}
+            {{!-- the post_owner variable is defined in post-route -> api/posts/viewpost/:id --}}
+            {{#if post_owner}}
+            <a href="/api/posts/editpost/{{post.id}}" id="edit_post" class="btn btn-success" type="submit">Edit
+            </a>
+            {{/if}}
         </div>
-
-
-        <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger devices --}}
+        <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger
+            devices --}}
             <div class="row">
                 <div id="profile-col" class="lim-width px-2">
                     {{>pfp post.user}}
@@ -42,8 +48,6 @@
             </div>
         </div>
     </div>
-
-
     {{!-- comment text area--}}
     <div class="col-md-12 col-lg-6 p-auto">
         <div class="caption-wrapper">
@@ -57,10 +61,8 @@
                     <button id="post-comment" class="btn btn-success" type="button">Post!</button>
                     {{/if}}
                 </div>
-
                 {{!-- comment section scroll--}}
                 {{#if post.comments}}
-
                 <h1 class="existing-comments mt-5">comments -</h1>
                 <div class="scroll">
                     {{#each post.comments as |comment| }}
@@ -81,15 +83,12 @@
                     {{/if}}
                 </div>
             </form>
-
             {{!-- being used in JS -- to pass value from ROUTE to JS--}}
             <input type="hidden" value={{user_id}} id="user_id">
             <input type="hidden" value={{user_id}} id="session_user">
         </div>
     </div>
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

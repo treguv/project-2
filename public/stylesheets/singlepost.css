@@ -1,7 +1,6 @@
 body {
   min-height: 100vh;
 }
-
 :root {
   --smoky-black: #1c110a;
   --dutch-white: #e4d6a7;
@@ -9,18 +8,15 @@ body {
   --rufous: #9b2915;
   --cadet-blue: #50a2a7;
 }
-
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
 }
-
-/* post image */ 
+/* post image */
 .card-img-top {
   max-width: 100%;
 }
-
-/* styles for like section under post image  */ 
+/* styles for like section under post image  */
 .like-display {
   font-size: 30px;
   color: #000;
@@ -28,17 +24,14 @@ body {
   text-align: left;
   padding-top: 30px;
 }
-
 .btn-like {
   text-align: right;
   min-height: 100%;
   font-size: 30px;
 }
-
 .enhance-heart {
   transition-duration: 500ms;
 }
-
 .enhance-heart:hover {
   -webkit-transform: scale(2);
   -ms-transform: scale(2);
@@ -46,51 +39,40 @@ body {
   color: var(--rufous);
   text-shadow: 2px 4px 6px red;
 }
-
 .post-username {
   font-family: "Josefin Sans";
 }
-
 .post-caption {
   font-family: "Josefin Sans";
   font-size: 25px;
   text-align: left;
 }
-
 #post-info-small {
   display: none;
 }
-
 /* styling for the profile picture */
 .lim-width img {
   max-width: 50px;
   align-items: center;
 }
-
-
 /* section for creating a comment */
-
 .caption-wrapper {
   width: 300px;
   max-width: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
 }
-
 .comment-title {
   font-family: "Baloo 2";
   text-align: left;
 }
-
 .text-area-background {
   width: 500px;
   border-radius: 15px;
 }
-
 .text-area-background:focus {
   outline: none !important;
 }
-
 .caption-wrapper .btn-success {
   padding: 13px 20px;
   background-color: #006666;
@@ -102,13 +84,11 @@ body {
   display: flex;
   border-radius: 15px;
 }
-
 .caption-wrapper .btn-success:hover {
   border: 1px solid #fdbb28;
   background-color: #fff;
   color: #fdbb28;
 }
-
 /* scroll and comments styles */
 .scroll {
   height: 500px;
@@ -116,28 +96,23 @@ body {
   font-size: 82%;
   overflow: scroll;
 }
-
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   box-shadow: 5px;
   border-radius: 15px;
 }
-
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
   box-shadow: 5px;
   -webkit-box-shadow: inset 0 0 6px var(--cadet-blue);
 }
-
 .existing-comments {
-  font-family: 'Baloo 2'; 
+  font-family: "Baloo 2";
   font-size: 20px;
   text-align: left;
 }
-
 .card-header {
   padding: 0px;
   background-color: white;
@@ -147,181 +122,145 @@ body {
   font-weight: bolder;
   text-align: left;
 }
-
 .comment-username {
   font-size: 20px;
 }
-
 .card-body {
   text-align: left;
   padding: 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-
 .card-text {
   font-family: "Baloo 2";
   font-size: 20px;
 }
-
-/* media queries begin */ 
+/* media queries begin */
 @media (max-width: 575px) {
-
   .flex-container {
     flex-direction: column;
   }
-
   .post-caption {
     font-size: 20px;
     display: flex;
   }
-
   .card-img-top {
     max-width: 80%;
     margin: auto;
     padding: auto;
   }
-
   .row {
     margin: auto;
     padding: auto;
   }
-
   .comment-title {
     font-family: "Baloo 2";
     text-align: left;
     font-size: 20px;
   }
-  
   .scroll {
     width: auto;
   }
-
   .card-header {
     max-height: 50px;
     font-size: 25px;
   }
-
   .comment-username {
     font-size: 15px;
     padding-left: 5px;
     padding-top: 5px;
   }
-
   .text-area-background {
     width: 100%;
   }
-
   .caption-wrapper .btn-success {
     max-height: 50px;
     max-width: 60px;
     font-size: 15px;
   }
-
   #post-info-large {
     display: none;
   }
-
   #post-info-small {
     display: block;
   }
-
   .post-caption {
     text-align: left;
   }
-
   .like-display {
     font-size: 20px;
     font-weight: bold;
     padding-top: 5px;
     margin-right: -10px;
   }
-
   .btn-like {
-    text-align: center; 
+    text-align: center;
     min-height: 100%;
     font-size: 20px;
     margin-bottom: 12px;
     margin-left: 15px;
   }
-
   .caption-wrapper {
     width: 100%;
     padding: 5px 5px;
   }
 }
-
 @media (max-width: 767.98px) {
-
   .flex-container {
     flex-direction: column;
   }
-
   .card-img-top {
     max-width: 80%;
     margin: auto;
     padding: auto;
   }
-
   .caption-wrapper {
     width: 100%;
     max-width: 100%;
   }
-
   .text-area-background {
     width: 100%;
   }
-
   .scroll {
-    width: 100%; 
+    width: 100%;
     height: 250px;
   }
-
   .caption-wrapper .btn-success {
     max-height: 50px;
     max-width: 70px;
     font-size: 15px;
   }
 }
-
 @media (max-width: 991.98px) {
-
   .flex-container {
     flex-direction: column;
   }
-
   .card-img-top {
     max-width: 80%;
-    padding: auto; 
-    margin: auto
+    padding: auto;
+    margin: auto;
   }
-
   .text-area-background {
     width: 100%;
   }
-
   .scroll {
-    width: 100%; 
+    width: 100%;
     height: 300px;
   }
-
   .caption-wrapper {
     width: 100%;
     padding: 5px 5px;
   }
-
   .caption-wrapper .btn-success {
     max-height: 50px;
     max-width: 70px;
     font-size: 15px;
   }
 }
-
 @media (min-width: 992px) {
   .text-area-background {
     width: 175%;
     border-radius: 15px;
   }
-
   .scroll {
     height: 500px;
     width: 170%;
@@ -329,13 +268,11 @@ body {
     overflow: scroll;
   }
 }
-
 @media (min-width: 1200px) {
   .text-area-background {
     width: 500px;
     border-radius: 15px;
   }
-
   .scroll {
     height: 500px;
     width: 500px;
@@ -343,4 +280,3 @@ body {
     overflow: scroll;
   }
 }
-

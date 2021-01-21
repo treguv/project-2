@@ -1,27 +1,34 @@
-async function searchPostHandler(event) {
+
+
+
+async function tagsPostHandler(event) {
   event.preventDefault();
-  const searchTerm = document.getElementById("query").value;
-  console.log("/api/posts/search/" + searchTerm); // grab the search query
 
-  //   const response = await fetch("/api/posts/search", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       tags: searchTerm,
-  //     }),
-  //   });
+  // To modify current URL and add / inject it (the new modified URL) as a new URL entry to history list, use pushState:
+  // this clears the url and prevents the new url to be added to the existing url :
+  // http://localhost:3001/api/posts/search/Memes/api/posts/search/Memes/
+  // this line will momentarily take you to the homepage and then add the new url 
+  window.history.pushState({}, document.title, "/");
 
-  //   const response = await fetch("/api/posts/search/" + searchTerm
-  document.location.replace("/api/posts/search/" + searchTerm);
-  //   if (response.ok) {
-  //     document.location.replace("");
-  //   } else {
-  //     console.log(response.statusText);
-  //   }
+  const searchTag = document.getElementById("search_tag").value.trim();
+  console.log(searchTag)
+
+
+  const response = await fetch(`api/posts/search/${searchTag}`, {
+    method: 'GET',
+    headers: {
+      "content-type": "application/json",
+    },
+
+  });
+  if (response.ok) {
+
+    document.location.replace(`api/posts/search/${searchTag}`);
+  } else {
+    alert(response.statusText);
+  }
 }
 
-document
-  .querySelector("#search-btn")
-  .addEventListener("click", searchPostHandler);
+
+document.getElementById("searchicon").addEventListener("click", tagsPostHandler);
+

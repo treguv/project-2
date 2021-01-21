@@ -33,7 +33,8 @@ async function makePostHandler(event) {
   console.log("Making post!");
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
-  const tags_local = document.querySelector("#tag").value.trim();
+  const tags_local = document.getElementById("post_tag").value.trim();
+  console.log(tags_local)
 
 
   const user_id = document.getElementById('user_id').value

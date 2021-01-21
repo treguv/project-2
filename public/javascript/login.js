@@ -19,11 +19,10 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      alert(response.statusText);
+      document.getElementById("error_msg").innerHTML = "Email or Password is incorrect";
     }
   }
 }
 
--document
-  .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
+
+document.querySelector(".login-form").addEventListener("submit", loginFormHandler);

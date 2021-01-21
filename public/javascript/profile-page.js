@@ -56,8 +56,9 @@ var myCropWidget = cloudinary.createUploadWidget(
 console.log(document.getElementById("session_user").value);
 //create post buton
 function createPost() {
+
   document.location.replace("/image");
-}
+};
 
 function updatePictureHandler(event) {
   event.preventDefault();
