@@ -1,4 +1,6 @@
 
+
+//edit function
 async function editFormHandler(event) {
     event.preventDefault();
 
@@ -28,9 +30,7 @@ async function editFormHandler(event) {
 document.getElementById('editform').addEventListener('submit', editFormHandler);
 
 
-// post-route destroy
-
-
+// delete function
 async function deleteFormHandler(event) {
     event.preventDefault();
 

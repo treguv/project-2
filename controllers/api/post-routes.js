@@ -50,12 +50,12 @@ router.get("/:id", (req, res) => {
       "post_caption",
       "created_at",
       "image_url",
-      [
-        sequelize.literal(
-          "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
-        ),
-        "like_count",
-      ],
+      // [
+      //   sequelize.literal(
+      //     "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
+      //   ),
+      //   "like_count",
+      // ],
     ],
     include: [
       {
@@ -94,6 +94,7 @@ router.get("/:id", (req, res) => {
 
 // expects ~ post_caption, user_id ,image_url *****
 router.post("/", (req, res) => {
+  console.log(req.body.tags)
   Post.create({
     post_caption: req.body.post_caption,
     user_id: req.body.user_id,
@@ -140,12 +141,12 @@ router.put("/like", (req, res) => {
       "post_caption",
       "image_url",
       "created_at",
-      [
-        sequelize.literal(
-          "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
-        ),
-        "like_count",
-      ],
+      // [
+      //   sequelize.literal(
+      //     "(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)"
+      //   ),
+      //   "like_count",
+      // ],
     ],
   })
     .then((likeData) => res.json(likeData))
@@ -289,20 +290,25 @@ router.get("/editpost/:id", (req, res) => {
   });
 });
 
-//Search for a given post
+//Select/search for a tag
 router.get("/search/:query", (req, res) => {
+  console.log(req.params.query)
   Post.findAll({
     where: {
       tags: req.params.query,
     },
   }).then((dbPostData) => {
     console.log("request recieved");
+
     // console.log(dbPostData.get({ plain: true }));
     const posts = dbPostData.map((post) => post.get({ plain: true })); // serialize all the posts
-    console.log("found posts", posts);
+    console.log("*******************************************************************************")
+    console.log(posts)
+    console.log("*******************************************************************************")
+    // console.log("found posts", posts);
     res.render("search-posts", {
       loggedIn: req.session.loggedIn,
-      posts,
+      posts
     });
   });
 });

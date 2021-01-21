@@ -34,7 +34,8 @@ router.get('/', withAuth, (req, res) => {
     })
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true })); // serialize data
-            res.render('profile-page', { posts, loggedIn: true });
+            const username = req.session.username;
+            res.render('profile-page', { posts, username, loggedIn: true });
         })
         .catch(err => {
             console.log(err);
