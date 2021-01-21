@@ -11,6 +11,7 @@ a {
   text-decoration: none;
   color: var(--smoky-black);
 }
+
 a:hover {
   text-decoration: none;
   color: var(--smoky-black);
@@ -37,68 +38,28 @@ html {
   font-weight: bold;
 }
 
-/* .search-btn {
-  background-color: var(--yellow-sun);
-} */
-
 .dot {
   height: 50px;
   width: 50px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  /* background-image: background image goes here */
 }
 
-/* homepage display styles */
-.card-custom {
-  border-radius: 10px 10px 10px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  border-color: var(--smoky-black);
-}
-/* 
-.card-image {
-  min-height: 100%; 
-  min-width: 100%;
-} */
-
-/* img {
-  max-height: 450px;
-  min-height: 400px;
-  min-width: 200px;
-  max-width: 500px;
-} */
-
-.card-img-custom {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+/* homepage styles */
+.mouse-over {
+  filter: drop-shadow(2px 2px 0.05rem black);
+  filter: blur(0);
+  transition: 0.2s;
 }
 
-.card-body-custom {
-  background-color: #f5f5f5;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 5px;
+.mouse-over:hover {
+  filter: drop-shadow(2px 2px 0.2rem black);
+  filter: blur(2px);
+  transform: scale(1.05);
 }
 
-.card-text-custom {
-  font-family: "Baloo 2";
-  font-size: 15px;
-}
-
-/* .col-lg-2 {
-  margin-bottom: -50px;
-} */
-
-/* profile styles */
-.profile-pic {
-  height: 200px;
-  width: 200px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
+/* profile page styles */
 .profile-username {
   font-family: "Josefin Sans";
 }
@@ -116,22 +77,57 @@ html {
 .your-posts {
   font-family: "Josefin Sans";
   font-size: 40px;
+  font-weight: bold;
 }
 
-.mouse-over {
-  filter: drop-shadow(2px 2px 0.05rem black);
-  filter: blur(0);
-  transition: 0.2s;
+/* search button with animation in nav bar */
+.search-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cadet-blue);
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
 }
 
-.mouse-over:hover {
-  filter: drop-shadow(2px 2px 0.2rem black);
-  filter: blur(2px);
-  transform: scale(1.05);
+.search-box:hover > .search-txt {
+  width: 200px;
+  padding: 0 6px;
+}
+
+.search-btn {
+  color: var(--smoky-black);
+  float: right;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+.lim-width img {
+  max-width: 50px;
+  max-height: 50px;
+  align-items: center;
 }
 
 /* Have the text show up on top of the card  */
-.overlay-text {
+/* .overlay-text {
   position: relative;
   top: 0%;
   left: 0%;
@@ -143,58 +139,4 @@ html {
 }
 .overlay-text:hover {
   opacity: 1;
-}
-
-/* General text styling  */
-.text {
-  font-family: "Roboto", sans-serif;
-  /* font-weight: bold; */
-  color: var(--smoky-black);
-}
-
-
-.search-box {
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%);
-  background: var(--cadet-blue);
-  height: 40px; 
-  border-radius: 40px;
-  padding: 10px;
-}
-
-.search-box:hover > .search-txt {
-  width: 200px; 
-  padding: 0 6px;
-}
-
-/* .search-box:hover > .search-btn {
-  background: white;
-
 } */
-
-.search-btn {
-  color: var(--smoky-black);
-  float: right; 
-  border-radius: 50%; 
-  /* background: var(--dutch-white);  */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-}
-
-.search-txt {
-  border: none; 
-  background: none;
-  outline: none; 
-  float: left; 
-  padding: 0; 
-  color: white; 
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  width: 0px;
-}
-

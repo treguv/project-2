@@ -215,7 +215,7 @@ router.get("/viewpost/:id", (req, res) => {
         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["username", "profile_photo"],
         },
       },
       {
@@ -303,9 +303,7 @@ router.get("/search/:query", (req, res) => {
 
     // console.log(dbPostData.get({ plain: true }));
     const posts = dbPostData.map((post) => post.get({ plain: true })); // serialize all the posts
-    console.log("*******************************************************************************")
-    console.log(posts)
-    console.log("*******************************************************************************")
+
     // console.log("found posts", posts);
     res.render("search-posts", {
       loggedIn: req.session.loggedIn,

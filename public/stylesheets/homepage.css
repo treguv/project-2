@@ -1,5 +1,30 @@
+/* gives a fixed width and height for homepage/profile-page/liked-post-page images */
 img {
   width: 200px;
   height: 300px;
   object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  img {
+    height: 150px;
+  }
+}
+
+@media (min-width: 992px) {
+  img {
+    height: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 1700px) {
+  img {
+    height: 300px;
+  }
 }

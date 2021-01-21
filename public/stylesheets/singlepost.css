@@ -1,12 +1,6 @@
-/* .box-border {
-  border: 1px sold;
-} */
 body {
-  /* font-family: "Karla", sans-serif; */
-  /* background-color: #fff; */
   min-height: 100vh;
 }
-
 :root {
   --smoky-black: #1c110a;
   --dutch-white: #e4d6a7;
@@ -14,31 +8,30 @@ body {
   --rufous: #9b2915;
   --cadet-blue: #50a2a7;
 }
-
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+/* post image */
 .card-img-top {
   max-width: 100%;
 }
-
+/* styles for like section under post image  */
 .like-display {
   font-size: 30px;
   color: #000;
   font-family: "Josefin Sans";
-  /* margin-bottom: 25px; */
   text-align: left;
   padding-top: 30px;
 }
-
 .btn-like {
-  /* background-color: var(--yellow-sun); */
   text-align: right;
   min-height: 100%;
   font-size: 30px;
 }
-
 .enhance-heart {
   transition-duration: 500ms;
 }
-
 .enhance-heart:hover {
   -webkit-transform: scale(2);
   -ms-transform: scale(2);
@@ -46,96 +39,41 @@ body {
   color: var(--rufous);
   text-shadow: 2px 4px 6px red;
 }
-
 .post-username {
   font-family: "Josefin Sans";
 }
-
 .post-caption {
   font-family: "Josefin Sans";
   font-size: 25px;
-}
-
-.comment-title {
-  font-family: "Baloo 2";
   text-align: left;
 }
-
-.text-area-background {
-  width: 500px;
-  border-radius: 15px;
+#post-info-small {
+  display: none;
 }
-
-.text-area-background:focus {
-  outline: none !important;
+/* styling for the profile picture */
+.lim-width img {
+  max-width: 50px;
+  align-items: center;
 }
-
-.caption-section-wrapper {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  padding: 68px 100px;
-  background-color: #fff;
-}
-@media (max-width: 991px) {
-  .caption-section-wrapper {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-@media (max-width: 575px) {
-  .caption-section-wrapper {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* min-height: 100vh; */
-    display: block;
-  }
-}
-
+/* section for creating a comment */
 .caption-wrapper {
   width: 300px;
   max-width: 100%;
   padding-top: 24px;
   padding-bottom: 24px;
 }
-@media (max-width: 575px) {
-  .caption-wrapper {
-    width: 100%;
-    padding: 5px 5px;
-  }
+.comment-title {
+  font-family: "Baloo 2";
+  text-align: left;
 }
-.caption-wrapper label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #b0adad;
+.text-area-background {
+  width: 500px;
+  border-radius: 15px;
 }
-.caption-wrapper .form-control {
-  border: none;
-  border-bottom: 1px solid #e7e7e7;
-  border-radius: 0;
-  padding: 9px 5px;
-  min-height: 40px;
-  font-size: 18px;
-  font-weight: normal;
+.text-area-background:focus {
+  outline: none !important;
 }
-.caption-wrapper .form-control::-webkit-input-placeholder {
-  color: #b0adad;
-}
-.caption-wrapper .form-control::-moz-placeholder {
-  color: #b0adad;
-}
-.caption-wrapper .form-control:-ms-input-placeholder {
-  color: #b0adad;
-}
-.caption-wrapper .form-control::-ms-input-placeholder {
-  color: #b0adad;
-}
-.caption-wrapper .form-control::placeholder {
-  color: #b0adad;
-}
-.btn-success {
+.caption-wrapper .btn-success {
   padding: 13px 20px;
   background-color: #006666;
   font-size: 20px;
@@ -146,197 +84,199 @@ body {
   display: flex;
   border-radius: 15px;
 }
-.btn-success:hover {
+.caption-wrapper .btn-success:hover {
   border: 1px solid #fdbb28;
   background-color: #fff;
   color: #fdbb28;
 }
-
-.caption-wrapper-footer-text {
-  font-size: 16px;
-  color: #000;
-  margin-bottom: 0;
-}
-
-.caption-title {
-  font-size: 30px;
-  color: #000;
-  font-weight: bolder;
-  /* margin-bottom: 25px; */
-  text-align: center;
-  padding: 20px 20px;
-}
-
-.add-img {
-  width: 100%;
-  height: 100vh;
-  -o-object-fit: scale-down;
-  object-fit: scale-down;
-  -o-object-position: center;
-  object-position: center;
-}
-@media (max-width: 575px) {
-  .add-img {
-    width: 100%;
-    height: 75%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 575px) {
-  .flex-container {
-    flex-direction: column;
-  }
-
-  .btn-success {
-    padding: 20px 20px;
-    text-align: center;
-    margin: auto;
-  }
-
-  .caption-section-wrapper {
-    padding: 20px 20px 0px 0px;
-    margin: 0%;
-  }
-  .caption-wrapper .form-control {
-    border-style: dotted;
-    border-width: 1px;
-  }
-}
-
-.flex-container {
-  display: flex;
-  flex-wrap: nowrap;
-}
-.flex-container > div {
-  width: 100%;
-  margin: 10px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 20px;
-}
-
-#tag {
-  margin-right: 20px;
-}
-
-/* scroll stuff  */
+/* scroll and comments styles */
 .scroll {
   height: 500px;
   width: 500px;
   font-size: 82%;
   overflow: scroll;
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: 5px;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  box-shadow: 5px;
+  -webkit-box-shadow: inset 0 0 6px var(--cadet-blue);
+}
+.existing-comments {
+  font-family: "Baloo 2";
+  font-size: 20px;
+  text-align: left;
+}
 .card-header {
   padding: 0px;
-  background-color: #006666;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: white;
+  border-bottom: 0px;
   color: #fdbb28;
   font-family: "Josefin Sans";
   font-weight: bolder;
   text-align: left;
 }
-
 .comment-username {
-  float: right;
   font-size: 20px;
 }
-
 .card-body {
   text-align: left;
-  padding: 5px;
+  padding: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-
 .card-text {
   font-family: "Baloo 2";
-  font-size: 15px;
+  font-size: 20px;
 }
-
-.title-caption {
-  text-align: left;
-  font-size: 30px;
-}
-
-#like-count {
-  text-align: left;
-}
-#user-col {
-  text-align: left;
-}
-
-/* scroll bar designs for comments */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: 5px;
-  border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 0px;
-  box-shadow: 5px;
-  -webkit-box-shadow: inset 0 0 6px var(--cadet-blue);
-}
-
+/* media queries begin */
 @media (max-width: 575px) {
+  .flex-container {
+    flex-direction: column;
+  }
   .post-caption {
     font-size: 20px;
     display: flex;
   }
-
   .card-img-top {
     max-width: 80%;
     margin: auto;
     padding: auto;
   }
-
   .row {
     margin: auto;
     padding: auto;
   }
-
   .comment-title {
     font-family: "Baloo 2";
     text-align: left;
     font-size: 20px;
   }
-
-  /* .text-area-background {
-    width: 300px;
-  } */
-
   .scroll {
     width: auto;
   }
-
   .card-header {
     max-height: 50px;
     font-size: 25px;
   }
-
   .comment-username {
     font-size: 15px;
     padding-left: 5px;
     padding-top: 5px;
   }
+  .text-area-background {
+    width: 100%;
+  }
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 60px;
+    font-size: 15px;
+  }
+  #post-info-large {
+    display: none;
+  }
+  #post-info-small {
+    display: block;
+  }
+  .post-caption {
+    text-align: left;
+  }
+  .like-display {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+    margin-right: -10px;
+  }
+  .btn-like {
+    text-align: center;
+    min-height: 100%;
+    font-size: 20px;
+    margin-bottom: 12px;
+    margin-left: 15px;
+  }
+  .caption-wrapper {
+    width: 100%;
+    padding: 5px 5px;
+  }
 }
-
+@media (max-width: 767.98px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .card-img-top {
+    max-width: 80%;
+    margin: auto;
+    padding: auto;
+  }
+  .caption-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+  .text-area-background {
+    width: 100%;
+  }
+  .scroll {
+    width: 100%;
+    height: 250px;
+  }
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
 }
-
-/* Styling for the profile picture */
-.lim-width img {
-  max-width: 50px;
-  align-items: center;
+@media (max-width: 991.98px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .card-img-top {
+    max-width: 80%;
+    padding: auto;
+    margin: auto;
+  }
+  .text-area-background {
+    width: 100%;
+  }
+  .scroll {
+    width: 100%;
+    height: 300px;
+  }
+  .caption-wrapper {
+    width: 100%;
+    padding: 5px 5px;
+  }
+  .caption-wrapper .btn-success {
+    max-height: 50px;
+    max-width: 70px;
+    font-size: 15px;
+  }
 }
-
-
-#edit-button {
-  margin-top: 20px;
+@media (min-width: 992px) {
+  .text-area-background {
+    width: 175%;
+    border-radius: 15px;
+  }
+  .scroll {
+    height: 500px;
+    width: 170%;
+    font-size: 82%;
+    overflow: scroll;
+  }
 }
-
-#delete-button {
-  margin-top: 20px;
+@media (min-width: 1200px) {
+  .text-area-background {
+    width: 500px;
+    border-radius: 15px;
+  }
+  .scroll {
+    height: 500px;
+    width: 500px;
+    font-size: 82%;
+    overflow: scroll;
+  }
 }

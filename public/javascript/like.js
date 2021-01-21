@@ -22,4 +22,4 @@ async function likePostHandler(event) {
   }
 }
 
-document.querySelector("#like-count").addEventListener("click", likePostHandler);
+document.querySelector("#like-btn").addEventListener("click", likePostHandler);

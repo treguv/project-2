@@ -2,182 +2,178 @@ const router = require("express").Router();
 const { User } = require("../../models");
 
 router.get("/", (req, res) => {
-    User.findAll({
-        attributes: { exclude: ["password"] }
-    })
-        .then((userData) => res.json(userData))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+  User.findAll({
+    attributes: { exclude: ["password"] },
+  })
+    .then((userData) => res.json(userData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get("/:id", (req, res) => {
-    User.findOne({
-        attributes: { exclude: ["password"] },
-        where: {
-            id: req.params.id
-        }
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((userData) => {
+      if (!userData) {
+        res.status(404).json({ message: "Hey no user with this id" });
+        return;
+      }
+      res.json(userData);
     })
-        .then((userData) => {
-            if (!userData) {
-                res.status(404).json({ message: "Hey no user with this id" });
-                return;
-            }
-            res.json(userData);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-
 
 //get the users profile photo url
 router.post("/pfp", (req, res) => {
-    console.log("recieved request");
-    User.findOne({
-        attributes: ["profile_photo"],
-        where: {
-            id: req.session.user_id,
-        },
+  console.log("recieved request");
+  User.findOne({
+    attributes: ["profile_photo"],
+    where: {
+      id: req.session.user_id,
+    },
+  })
+    .then((userData) => {
+      const serialUserData = userData.get({ plain: true });
+      console.log(serialUserData);
+      res.json({
+        profile_photo: serialUserData.profile_photo,
+      });
     })
-        .then((userData) => {
-            const serialUserData = userData.get({ plain: true });
-            console.log(serialUserData);
-            res.json({
-                profile_photo: serialUserData.profile_photo,
-            });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
-
 
 //login route
 router.post("/login", (req, res) => {
-    console.log(req.body);
+  console.log(req.body);
 
-    User.findOne({
-        where: {
-            email: req.body.email,
-        },
-    }).then((userData) => {
-        if (!userData) {
-            res.status(400).json({ message: "No user with that email address!!" });
-            return;
-        }
-        const validPassword = userData.checkPassword(req.body.password);
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((userData) => {
+    if (!userData) {
+      res.status(400).json({ message: "No user with that email address!!" });
+      return;
+    }
+    const validPassword = userData.checkPassword(req.body.password);
 
-        if (!validPassword) {
-            res.status(400).json({ message: "Incorrect password!" });
-            return;
-        }
-        req.session.save(() => {
-            //declare session variables
-            req.session.user_id = userData.id;
-            req.session.username = userData.username;
-            req.session.loggedIn = true;
-            res.json({ user: userData, message: " You are now logged in!" });
-        });
+    if (!validPassword) {
+      res.status(400).json({ message: "Incorrect password!" });
+      return;
+    }
+    req.session.save(() => {
+      //declare session variables
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+      res.json({ user: userData, message: " You are now logged in!" });
     });
+  });
 });
 
 
 //logout route  
 router.post("/logout", (req, res) => {
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-            console.log(req.session);
-        });
-    } else {
-        res.status(404).end();
-    }
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+      console.log(req.session);
+    });
+  } else {
+    res.status(404).end();
+  }
 });
-
 
 //create user
 router.post("/", async (req, res) => {
-    const { username, email, password } = req.body;
-    try {
-        const userExists = Boolean(
-            await User.findOne({
-                where: { username },
-            })
-        );
-        if (userExists) {
-            res.status(409).json({ message: " Username already exists!" });
-            return;
-        }
-        const user = await User.create({ username, email, password });
-        req.session.save(() => {
-            req.session.user_id = user.id;
-            req.session.username = user.username;
-            req.session.loggedIn = true;
-
-            res.status(201).json(user);
-        });
-    } catch (err) {
-        res.status(500).send({
-            message: "you are not logged in",
-        });
+  const { username, email, password } = req.body;
+  try {
+    const userExists = Boolean(
+      await User.findOne({
+        where: { username },
+      })
+    );
+    if (userExists) {
+      res.status(409).json({ message: " Username already exists!" });
+      return;
     }
+    const user = await User.create({ username, email, password });
+    req.session.save(() => {
+      req.session.user_id = user.id;
+      req.session.username = user.username;
+      req.session.loggedIn = true;
+
+      res.status(201).json(user);
+    });
+  } catch (err) {
+    res.status(500).send({
+      message: "you are not logged in",
+    });
+  }
 });
 
 
 
 // make sure to pass in req.body in put routes
 router.put("/:id", (req, res) => {
-    User.update(req.body, {
-        where: {
-            id: req.params.id,
-        },
-        attributes: {
-            profile_photo: req.body.profile_photo,
-        },
+  User.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+    attributes: {
+      profile_photo: req.body.profile_photo,
+    },
+  })
+    .then((userData) => {
+      if (!userData[0]) {
+        res
+          .status(404)
+          .json({ message: "Hey sorry mate! No user found with this id!!" });
+        return;
+      }
+      console.log(req.body.profile_photo);
+      res.json(userData);
     })
-        .then((userData) => {
-            if (!userData[0]) {
-                res
-                    .status(404)
-                    .json({ message: "Hey sorry mate! No user found with this id!!" });
-                return;
-            }
-            console.log(req.body.profile_photo);
-            res.json(userData);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 
 
 
 router.delete("/:id", (req, res) => {
-    User.destroy({
-        where: {
-            id: req.params.id,
-        },
-    })
-        .then((userData) => {
-            if (!userData) {
-                res.status(404).json({
-                    message: "Sorry mate!... seems like there's no user with this id :/",
-                });
-                return;
-            }
-            res.json(userData);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((userData) => {
+      if (!userData) {
+        res.status(404).json({
+          message: "Sorry mate!... seems like there's no user with this id :/",
         });
+        return;
+      }
+      res.json(userData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-
-module.exports = router; 
+module.exports = router;
