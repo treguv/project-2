@@ -112,7 +112,7 @@ router.post("/", (req, res) => {
 //add a like to a post
 router.post("/like", (req, res) => {
   Like.create({
-    user_id: 3, //req.session.user_id,
+    user_id: req.session.user_id, //req.session.user_id,
     post_id: req.body.post_id,
   })
     .then((dbLikeData) => {
@@ -220,13 +220,20 @@ router.get("/viewpost/:id", (req, res) => {
         model: User,
         attributes: ["username", "profile_photo"],
       },
+      {
+        model: Like,
+        as: "likes",
+        attributes: ["id", "user_id"],
+      },
     ],
   }).then((dbPostData) => {
     // console.log(dbPostData);
     const post = dbPostData.get({ plain: true }); // serialize all the posts
     console.log(post);
+    const like_count = post.likes.length;
     res.render("single-post", {
       post,
+      like_count,
       loggedIn: req.session.loggedIn,
       user_id: req.session.user_id,
     });
