@@ -11,7 +11,7 @@ function getPFP() {
       return res.json();
     })
     .then((finalData) => {
-      document.getElementById("pfp").src = finalData.profile_photo;
+      document.getElementById("pfp-nav").src = finalData.profile_photo;
     });
 }
 getPFP();
@@ -26,7 +26,6 @@ async function logout() {
     alert(response.statusText);
   }
 }
-
 
 //go to profile pge
 function profilePageHandler() {
