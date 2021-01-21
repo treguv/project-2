@@ -32,6 +32,28 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//get the users profile photo url
+router.post("/pfp", (req, res) => {
+  console.log("recieved request");
+  User.findOne({
+    attributes: ["profile_photo"],
+    where: {
+      id: req.session.user_id,
+    },
+  })
+    .then((userData) => {
+      const serialUserData = userData.get({ plain: true });
+      console.log(serialUserData);
+      res.json({
+        profile_photo: serialUserData.profile_photo,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 //login route
 router.post("/login", (req, res) => {
   console.log(req.body);

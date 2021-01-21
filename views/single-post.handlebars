@@ -17,20 +17,22 @@
         {{!-- like button and amount of likes post has --}}
         <div class="row">
             <button id="like-btn" class="btn btn-like"><i class="far fa-heart enhance-heart"></i></button>
-            <p class="like-display">{{post.like_count}}1,345</p> {{!-- will dynamically display number of post likes --}}
+            <p class="like-display">{{post.like_count}}1,345</p> {{!-- will dynamically display number of post likes
+            --}}
         </div>
 
         {{!-- user who posted image --}}
         <div id="post-info-large" class="row">
-                <div id="profile-col" class="lim-width px-2">
-                    {{>pfp post.user}}
-                </div>
-                <p class="post-caption ml-2 mt-1"><strong class="post-username">{{post.user.username}}</strong> -
-                    {{post.post_caption}}</p>
+            <div id="profile-col" class="lim-width px-2">
+                {{>pfp post.user}}
+            </div>
+            <p class="post-caption ml-2 mt-1"><strong class="post-username">{{post.user.username}}</strong> -
+                {{post.post_caption}}</p>
         </div>
 
 
-        <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger devices --}}
+        <div id="post-info-small" class="row"> {{!-- this will be displayed on small devices and hidden in larger
+            devices --}}
             <div class="row">
                 <div id="profile-col" class="lim-width px-2">
                     {{>pfp post.user}}
@@ -67,7 +69,11 @@
                     <div class="container">
                         <div class="card-header row pl-lg-2">
                             <div class="pt-lg-2">
-                                <a class="dot" href="https://github.com/"></a> {{!-- user who commented profile --}}
+                                {{!-- <a class="dot" href="https://github.com/"></a> user who commented profile --}}
+                                {{!-- This is where we will put the users profile photo --}}
+                                <div class="lim-width">
+                                    {{> pfp user}}
+                                </div>
                             </div>
                             <div class="comment-username pl-lg-1 pt-lg-3"> {{!-- username of person who commented --}}
                                 <p>{{user.username}}</p>

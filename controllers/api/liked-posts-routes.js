@@ -6,7 +6,7 @@ const { Post, User, Comment, Like } = require("../../models");
 router.get("/", (req, res) => {
   Like.findAll({
     where: {
-      user_id: 3, //req.session.user_id, //req.session.user_id, PUT BACK
+      user_id: req.session.user_id, //3, //req.session.user_id, //req.session.user_id, PUT BACK
     },
     attributes: ["id", "user_id", "post_id"],
     include: [

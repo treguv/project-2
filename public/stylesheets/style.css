@@ -82,25 +82,25 @@ html {
 
 /* search button with animation in nav bar */
 .search-box {
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: var(--cadet-blue);
-  height: 40px; 
+  height: 40px;
   border-radius: 40px;
   padding: 10px;
 }
 
 .search-box:hover > .search-txt {
-  width: 200px; 
+  width: 200px;
   padding: 0 6px;
 }
 
 .search-btn {
   color: var(--smoky-black);
-  float: right; 
-  border-radius: 50%; 
+  float: right;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,18 +108,23 @@ html {
 }
 
 .search-txt {
-  border: none; 
+  border: none;
   background: none;
-  outline: none; 
-  float: left; 
-  padding: 0; 
-  color: white; 
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
   font-size: 16px;
   transition: 0.4s;
   line-height: 40px;
   width: 0px;
 }
 
+.lim-width img {
+  max-width: 50px;
+  max-height: 50px;
+  align-items: center;
+}
 
 /* Have the text show up on top of the card  */
 /* .overlay-text {
@@ -135,5 +140,3 @@ html {
 .overlay-text:hover {
   opacity: 1;
 } */
-
-
