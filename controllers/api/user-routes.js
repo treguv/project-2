@@ -1,32 +1,32 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+const router = require("express").Router();
+const { User } = require("../../models");
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
     User.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ["password"] }
     })
-        .then(userData => res.json(userData))
-        .catch(err => {
+        .then((userData) => res.json(userData))
+        .catch((err) => {
             console.log(err);
             res.status(500).json(err);
-        })
+        });
 });
 
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
     User.findOne({
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ["password"] },
         where: {
             id: req.params.id
         }
     })
-        .then(userData => {
+        .then((userData) => {
             if (!userData) {
                 res.status(404).json({ message: "Hey no user with this id" });
                 return;
             }
             res.json(userData);
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json(err);
         })
@@ -34,23 +34,22 @@ router.get('/:id', (req, res) => {
 
 
 //login route
-router.post('/login', (req, res) => {
-    console.log(req.body)
+router.post("/login", (req, res) => {
+    console.log(req.body);
 
     User.findOne({
         where: {
-            email: req.body.email
-        }
-
-    }).then(userData => {
+            email: req.body.email,
+        },
+    }).then((userData) => {
         if (!userData) {
-            res.status(400).json({ message: 'No user with that email address!!' });
+            res.status(400).json({ message: "No user with that email address!!" });
             return;
         }
         const validPassword = userData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect password!' });
+            res.status(400).json({ message: "Incorrect password!" });
             return;
         }
         req.session.save(() => {
@@ -60,90 +59,101 @@ router.post('/login', (req, res) => {
             req.session.loggedIn = true;
             res.json({ user: userData, message: " You are now logged in!" });
         });
-
     });
 });
 
+
 //logout route  
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
-            console.log(req.session)
+            console.log(req.session);
         });
-    }
-    else {
+    } else {
         res.status(404).end();
     }
-
 });
 
 
 //create user
-router.post('/', async (req, res) => {
-    const { username, email, password } = req.body
+router.post("/", async (req, res) => {
+    const { username, email, password } = req.body;
     try {
         const userExists = Boolean(
             await User.findOne({
-                where: { username }
+                where: { username },
             })
-        )
+        );
         if (userExists) {
             res.status(409).json({ message: " Username already exists!" });
             return;
         }
-        const user = await User.create({ username, email, password })
+        const user = await User.create({ username, email, password });
         req.session.save(() => {
             req.session.user_id = user.id;
             req.session.username = user.username;
             req.session.loggedIn = true;
 
             res.status(201).json(user);
-        })
+        });
     } catch (err) {
         res.status(500).send({
-            message: "you are not logged in"
-        })
+            message: "you are not logged in",
+        });
     }
 });
 
+
+
 // make sure to pass in req.body in put routes
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
     User.update(req.body, {
         where: {
-            id: req.params.id
-        }
+            id: req.params.id,
+        },
+        attributes: {
+            profile_photo: req.body.profile_photo,
+        },
     })
-        .then(userData => {
+        .then((userData) => {
             if (!userData[0]) {
-                res.status(404).json({ message: 'Hey sorry mate! No user found with this id!!' });
+                res
+                    .status(404)
+                    .json({ message: "Hey sorry mate! No user found with this id!!" });
                 return;
             }
+            console.log(req.body.profile_photo);
             res.json(userData);
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json(err);
-        })
+        });
 });
 
-router.delete('/:id', (req, res) => {
+
+
+
+router.delete("/:id", (req, res) => {
     User.destroy({
         where: {
-            id: req.params.id
-        }
+            id: req.params.id,
+        },
     })
-        .then(userData => {
+        .then((userData) => {
             if (!userData) {
-                res.status(404).json({ message: "Sorry mate!... seems like there's no user with this id :/" });
+                res.status(404).json({
+                    message: "Sorry mate!... seems like there's no user with this id :/",
+                });
                 return;
             }
             res.json(userData);
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(err);
             res.status(500).json(err);
-        })
+        });
 });
 
 

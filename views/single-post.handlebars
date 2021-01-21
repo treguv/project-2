@@ -30,8 +30,9 @@
 
                 {{!-- user who posted image --}}
                 <div id="post-info-large" class="row">
-                    <div id="profile-col">
-                        <a class="inline-block dot " href="https://github.com/"></a>
+                    <div id="profile-col" class="lim-width px-2">
+                        {{!-- <a class="inline-block dot " href="https://github.com/"></a> --}}
+                        {{>pfp post.user}}
                     </div>
                     <p class="post-caption"><strong class="post-username">{{post.user.username}}</strong> -
                         {{post.post_caption}}</p>

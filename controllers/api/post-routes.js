@@ -113,7 +113,7 @@ router.post("/", (req, res) => {
 //add a like to a post
 router.post("/like", (req, res) => {
   Like.create({
-    user_id: 3, //req.session.user_id,
+    user_id: req.session.user_id,
     post_id: req.body.post_id,
   })
     .then((dbLikeData) => {
@@ -128,7 +128,7 @@ router.post("/like", (req, res) => {
 // MUST BE BEFORE OTHER PUT ROUTES (will create error otherwise)
 router.put("/like", (req, res) => {
   Like.create({
-    user_id: req.body.user_id,
+    user_id: req.session.user_id,
     post_id: req.body.post_id,
   });
   // then find the post user liked
@@ -220,7 +220,8 @@ router.get("/viewpost/:id", (req, res) => {
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username", "profile_photo"],
+
       },
     ],
   }).then((dbPostData) => {

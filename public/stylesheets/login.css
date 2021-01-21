@@ -123,4 +123,9 @@ body {
   object-position: left;
 }
 
+#error_msg {
+  color: red;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=login.css.map */

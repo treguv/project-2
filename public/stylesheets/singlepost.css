@@ -323,6 +323,16 @@ body {
     padding-top: 5px;
   }
 }
+
+}
+
+/* Styling for the profile picture */
+.lim-width img {
+  max-width: 50px;
+  align-items: center;
+}
+
+
 #edit-button {
   margin-top: 20px;
 }
