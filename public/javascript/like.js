@@ -18,7 +18,7 @@ async function likePostHandler(event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    alert(response.statusText);
+    document.getElementById("already_liked_msg").innerHTML = "hey! you already liked this!"
   }
 }
 

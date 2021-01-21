@@ -21,6 +21,7 @@ Like.belongsTo(User, {
 // like only one post
 Like.belongsTo(Post, {
   foreignKey: "post_id",
+  onDelete: "cascade"
 });
 
 // user can like many posts
@@ -31,6 +32,7 @@ User.hasMany(Like, {
 // post can have many likes
 Post.hasMany(Like, {
   foreignKey: "post_id",
+  onDelete: "cascade"
 });
 
 // models will be connected through the Like model
