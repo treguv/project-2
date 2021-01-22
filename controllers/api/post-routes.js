@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Post, User, Like, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
-const withAuth = require('../../utils/auth');
+const withAuth = require("../../utils/auth");
 
 //find all post
 router.get("/", (req, res) => {
@@ -94,7 +94,7 @@ router.get("/:id", (req, res) => {
 
 // expects ~ post_caption, user_id ,image_url *****
 router.post("/", (req, res) => {
-  console.log(req.body.tags)
+  console.log(req.body.tags);
   Post.create({
     post_caption: req.body.post_caption,
     user_id: req.body.user_id,
@@ -221,7 +221,6 @@ router.get("/viewpost/:id", (req, res) => {
       {
         model: User,
         attributes: ["username", "profile_photo"],
-
       },
       {
         model: Like,
@@ -232,7 +231,7 @@ router.get("/viewpost/:id", (req, res) => {
   }).then((dbPostData) => {
     // console.log(dbPostData);
     const post = dbPostData.get({ plain: true }); // serialize all the posts
-    console.log(post.user.username, req.session.username);
+    console.log(post);
     const like_count = post.likes.length;
 
     if (post.user.username == req.session.username) {
@@ -241,7 +240,7 @@ router.get("/viewpost/:id", (req, res) => {
         like_count,
         loggedIn: req.session.loggedIn,
         user_id: req.session.user_id,
-        post_owner: true
+        post_owner: true,
       });
     } else {
       res.render("single-post", {
@@ -285,7 +284,7 @@ router.get("/editpost/:id", (req, res) => {
         post,
         loggedIn: req.session.loggedIn,
         user_id: req.session.user_id,
-        post_owner: true
+        post_owner: true,
       });
     } else {
       res.render("edit-post", {
@@ -299,7 +298,7 @@ router.get("/editpost/:id", (req, res) => {
 
 //Select/search for a tag
 router.get("/search/:query", (req, res) => {
-  console.log(req.params.query)
+  console.log(req.params.query);
   Post.findAll({
     where: {
       tags: req.params.query,
@@ -313,7 +312,7 @@ router.get("/search/:query", (req, res) => {
     // console.log("found posts", posts);
     res.render("search-posts", {
       loggedIn: req.session.loggedIn,
-      posts
+      posts,
     });
   });
 });
