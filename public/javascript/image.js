@@ -35,7 +35,7 @@ async function makePostHandler(event) {
   const caption = document.querySelector("#caption").value.trim();
   let tags_local = document.getElementById("post_tag").value.trim();
   console.log(tags_local);
-  if ((tags_local = "#Tags Categories")) {
+  if (tags_local == "Tags Categories") {
     tags_local = "Different";
   }
   console.log(tags_local);
