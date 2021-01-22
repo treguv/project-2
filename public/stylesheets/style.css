@@ -22,7 +22,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'sans-serif';
   color: var(--smoky-black);
 }
 /* google fonts available : 'Josefin Sans' and 'Baloo 2' */
@@ -30,6 +30,34 @@ html {
 /* navbar styles */
 .nav-background {
   background-color: var(--yellow-sun);
+}
+
+.nav-background .nav-link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);;
+  font-size: 25px;
+  font-family: 'Josefin Sans';
+  font-weight: bold;
+}
+
+.nav-background .nav-link:hover {
+  color: black;
+}
+
+.app-title {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 40px;
+  font-family: 'Josefin Sans';
+  font-weight: bold;
+  transition-duration: 500ms;
+}
+
+.app-title:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  color: black;
 }
 
 .navbar-text {
@@ -80,44 +108,11 @@ html {
   font-weight: bold;
 }
 
-/* search button with animation in nav bar */
-.search-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--cadet-blue);
-  height: 40px;
-  border-radius: 40px;
-  padding: 10px;
-}
-
-.search-box:hover > .search-txt {
-  width: 200px;
-  padding: 0 6px;
-}
-
-.search-btn {
-  color: var(--smoky-black);
-  float: right;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-}
-
-.search-txt {
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: white;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 40px;
-  width: 0px;
+select {
+  background-color: #bfd7b565;
+  width: 250px;
+  height: 40px; 
+  border-radius: 15px;
 }
 
 .lim-width img {
@@ -126,17 +121,9 @@ html {
   align-items: center;
 }
 
-/* Have the text show up on top of the card  */
-/* .overlay-text {
-  position: relative;
-  top: 0%;
-  left: 0%;
-  transform: translate(0%, -100%);
-  z-index: 9999;
-  color: var(--dutch-white);
-  opacity: 0;
-  transition: 0.2s;
+@media (max-width: 767.98px) {
+  .lim-width img {
+    margin-top: 10px;
+  }
 }
-.overlay-text:hover {
-  opacity: 1;
-} */
+
