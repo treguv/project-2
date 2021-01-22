@@ -33,11 +33,14 @@ async function makePostHandler(event) {
   console.log("Making post!");
   event.preventDefault();
   const caption = document.querySelector("#caption").value.trim();
-  const tags_local = document.getElementById("post_tag").value.trim();
-  console.log(tags_local)
+  let tags_local = document.getElementById("post_tag").value.trim();
+  console.log(tags_local);
+  if ((tags_local = "#Tags Categories")) {
+    tags_local = "Different";
+  }
+  console.log(tags_local);
 
-
-  const user_id = document.getElementById('user_id').value
+  const user_id = document.getElementById("user_id").value;
   console.log(tags_local);
   const image = document.getElementById("post-image").src;
   // console.log(
@@ -75,5 +78,4 @@ document
   .getElementById("upload-image")
   .addEventListener("click", makePostHandler);
 
-
-  // route ---> html ---> javascrip 
+// route ---> html ---> javascrip
