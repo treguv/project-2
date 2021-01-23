@@ -25,14 +25,13 @@ body {
   padding-top: 20px;
 }
 
-
 .tags {
-  font-family: 'Josefin Sans'; 
+  font-family: "Josefin Sans";
   font-weight: bold;
   font-size: 30px;
   position: relative;
-  left: 82%;
-  margin-top: 10px;
+
+  /* margin-top: 10px; */
 }
 
 .btn-like {
@@ -42,10 +41,10 @@ body {
 }
 
 .edit-post-btn {
-  background-color: #bfd7b5;;
+  background-color: #bfd7b5;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   transition-duration: 500ms;
 }
 
@@ -53,7 +52,7 @@ body {
   -webkit-transform: scale(2);
   -ms-transform: scale(2);
   transform: scale(1.4);
-  background-color: var(--rufous); 
+  background-color: var(--rufous);
 }
 
 .enhance-heart {
@@ -166,7 +165,7 @@ body {
 
 .edit-page-username {
   font-size: 30px;
-  font-family: 'Josefin Sans'; 
+  font-family: "Josefin Sans";
 }
 
 .edit-caption {
@@ -180,9 +179,9 @@ body {
 }
 
 .edit-caption-header {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-weight: bold;
-  font-size: 30px
+  font-size: 30px;
 }
 
 .save-edit-btn {
@@ -196,7 +195,7 @@ body {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
-  background-color: #50723c75; 
+  background-color: #50723c75;
 }
 
 .delete-post-btn {
@@ -210,10 +209,8 @@ body {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
-  background-color: #d6283975; 
+  background-color: #d6283975;
 }
-
-
 
 /* media queries begin */
 @media (max-width: 575px) {
@@ -275,15 +272,14 @@ body {
   .like-display {
     font-size: 20px;
     font-weight: bold;
-    padding-top: 2%;
-    margin-right: -10px;
+    /* padding-top: 2%; */
   }
   .btn-like {
     text-align: center;
     min-height: 100%;
     font-size: 20px;
-    margin-bottom: 12px;
-    margin-left: 15px;
+    /* margin-bottom: 12px;
+    margin-left: 15px; */
   }
 
   .caption-wrapper {
@@ -291,9 +287,9 @@ body {
     padding: 5px 5px;
   }
 
-  .tags {
+  /* .tags {
     margin-left: 15%;
-  }
+  } */
 }
 @media (max-width: 767.98px) {
   .flex-container {
@@ -349,10 +345,8 @@ body {
 
   .tags {
     font-size: 20px;
-    left: 46%; 
-    position: absolute;
   }
-  
+
   .edit-post-btn {
     font-size: 10px;
   }
@@ -362,7 +356,7 @@ body {
   }
 
   .edit-caption {
-    width: 100%
+    width: 100%;
   }
 }
 @media (min-width: 992px) {
@@ -376,14 +370,13 @@ body {
     font-size: 82%;
     overflow: scroll;
   }
-  
+
   .tags {
     font-size: 20px;
-    left: 70%
   }
 
   .edit-caption {
-    width: 100%
+    width: 100%;
   }
 }
 @media (min-width: 1200px) {
@@ -398,14 +391,16 @@ body {
     overflow: scroll;
   }
 
-  
-.tags {
-  font-size: 25px;
-  margin-top: 10px;
-  left: 85%;
+  .tags {
+    font-size: 25px;
+    /* margin-top: 10px; */
+  }
+
+  .edit-caption {
+    width: 60%;
+  }
 }
 
-.edit-caption {
-  width: 60%
-}
+#post-image {
+  max-width: 100%;
 }
