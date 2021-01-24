@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
-const withAuth = require('../utils/auth');
-
+const withAuth = require("../utils/auth");
 
 // renders homepage.handlebars template
 router.get("/", (req, res) => {
-  console.log(req.session.user_id)
+  console.log(req.session.user_id);
   //get data it needs to render posts
   Post.findAll({
     include: [
@@ -22,6 +21,7 @@ router.get("/", (req, res) => {
         attributes: ["username"],
       },
     ],
+    order: [["created_at", "DESC"]],
   }).then((dbPostData) => {
     const posts = dbPostData.map((post) => post.get({ plain: true })); // serialize all the posts
     console.log(posts);
@@ -46,7 +46,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-//render the image test page and added withAuth function 
+//render the image test page and added withAuth function
 router.get("/image", withAuth, (req, res) => {
   res.render("image-upload", {
     loggedIn: req.session.loggedIn,
